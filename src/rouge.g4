@@ -1,5 +1,5 @@
 // Define a grammar called Hello
-grammar GYOO;
+grammar rouge;
 program   : 'begin' block+ 'end';
 
 block

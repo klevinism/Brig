@@ -1,6 +1,6 @@
 package generated;
 
-// Generated from GYOO.g4 by ANTLR 4.4
+// Generated from rouge.g4 by ANTLR 4.4
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class GYOOParser extends Parser {
+public class rougeParser extends Parser {
 	static { RuntimeMetaData.checkVersion("4.4", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -46,7 +46,7 @@ public class GYOOParser extends Parser {
 	};
 
 	@Override
-	public String getGrammarFileName() { return "GYOO.g4"; }
+	public String getGrammarFileName() { return "rouge.g4"; }
 
 	@Override
 	public String[] getTokenNames() { return tokenNames; }
@@ -60,7 +60,7 @@ public class GYOOParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public GYOOParser(TokenStream input) {
+	public rougeParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
@@ -77,15 +77,15 @@ public class GYOOParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_program; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterProgram(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterProgram(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitProgram(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitProgram(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitProgram(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitProgram(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -138,15 +138,15 @@ public class GYOOParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_block; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterBlock(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterBlock(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitBlock(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitBlock(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitBlock(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitBlock(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -201,7 +201,7 @@ public class GYOOParser extends Parser {
 		public If_statementContext if_statement() {
 			return getRuleContext(If_statementContext.class,0);
 		}
-		public TerminalNode OTHER() { return getToken(GYOOParser.OTHER, 0); }
+		public TerminalNode OTHER() { return getToken(rougeParser.OTHER, 0); }
 		public AssignContext assign() {
 			return getRuleContext(AssignContext.class,0);
 		}
@@ -217,15 +217,15 @@ public class GYOOParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_statement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterStatement(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterStatement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitStatement(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitStatement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitStatement(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitStatement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -296,7 +296,7 @@ public class GYOOParser extends Parser {
 	}
 
 	public static class AssignContext extends ParserRuleContext {
-		public TerminalNode ID() { return getToken(GYOOParser.ID, 0); }
+		public TerminalNode ID() { return getToken(rougeParser.ID, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
@@ -306,15 +306,15 @@ public class GYOOParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_assign; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterAssign(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterAssign(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitAssign(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitAssign(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitAssign(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitAssign(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -370,15 +370,15 @@ public class GYOOParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_print; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterPrint(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterPrint(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitPrint(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitPrint(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitPrint(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitPrint(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -413,23 +413,23 @@ public class GYOOParser extends Parser {
 	}
 
 	public static class Print_expContext extends ParserRuleContext {
-		public TerminalNode PRINT() { return getToken(GYOOParser.PRINT, 0); }
-		public TerminalNode PRINTLN() { return getToken(GYOOParser.PRINTLN, 0); }
+		public TerminalNode PRINT() { return getToken(rougeParser.PRINT, 0); }
+		public TerminalNode PRINTLN() { return getToken(rougeParser.PRINTLN, 0); }
 		public Print_expContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_print_exp; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterPrint_exp(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterPrint_exp(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitPrint_exp(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitPrint_exp(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitPrint_exp(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitPrint_exp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -461,10 +461,10 @@ public class GYOOParser extends Parser {
 	}
 
 	public static class If_statementContext extends ParserRuleContext {
-		public List<TerminalNode> ELSE() { return getTokens(GYOOParser.ELSE); }
-		public List<TerminalNode> IF() { return getTokens(GYOOParser.IF); }
+		public List<TerminalNode> ELSE() { return getTokens(rougeParser.ELSE); }
+		public List<TerminalNode> IF() { return getTokens(rougeParser.IF); }
 		public TerminalNode IF(int i) {
-			return getToken(GYOOParser.IF, i);
+			return getToken(rougeParser.IF, i);
 		}
 		public Condition_blockContext condition_block(int i) {
 			return getRuleContext(Condition_blockContext.class,i);
@@ -476,7 +476,7 @@ public class GYOOParser extends Parser {
 			return getRuleContext(Stat_blockContext.class,0);
 		}
 		public TerminalNode ELSE(int i) {
-			return getToken(GYOOParser.ELSE, i);
+			return getToken(rougeParser.ELSE, i);
 		}
 		public If_statementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -484,15 +484,15 @@ public class GYOOParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_if_statement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterIf_statement(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterIf_statement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitIf_statement(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitIf_statement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitIf_statement(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitIf_statement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -546,7 +546,7 @@ public class GYOOParser extends Parser {
 	}
 
 	public static class While_statementContext extends ParserRuleContext {
-		public TerminalNode CPAR() { return getToken(GYOOParser.CPAR, 0); }
+		public TerminalNode CPAR() { return getToken(rougeParser.CPAR, 0); }
 		public Stat_blockContext stat_block() {
 			return getRuleContext(Stat_blockContext.class,0);
 		}
@@ -556,22 +556,22 @@ public class GYOOParser extends Parser {
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
 		}
-		public TerminalNode OPAR() { return getToken(GYOOParser.OPAR, 0); }
+		public TerminalNode OPAR() { return getToken(rougeParser.OPAR, 0); }
 		public While_statementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_while_statement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterWhile_statement(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterWhile_statement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitWhile_statement(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitWhile_statement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitWhile_statement(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitWhile_statement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -629,11 +629,11 @@ public class GYOOParser extends Parser {
 	}
 
 	public static class For_statementContext extends ParserRuleContext {
-		public List<TerminalNode> SCOL() { return getTokens(GYOOParser.SCOL); }
+		public List<TerminalNode> SCOL() { return getTokens(rougeParser.SCOL); }
 		public Stat_blockContext stat_block(int i) {
 			return getRuleContext(Stat_blockContext.class,i);
 		}
-		public TerminalNode CPAR() { return getToken(GYOOParser.CPAR, 0); }
+		public TerminalNode CPAR() { return getToken(rougeParser.CPAR, 0); }
 		public AssignContext assign() {
 			return getRuleContext(AssignContext.class,0);
 		}
@@ -644,24 +644,24 @@ public class GYOOParser extends Parser {
 			return getRuleContext(ExpressionContext.class,0);
 		}
 		public TerminalNode SCOL(int i) {
-			return getToken(GYOOParser.SCOL, i);
+			return getToken(rougeParser.SCOL, i);
 		}
-		public TerminalNode OPAR() { return getToken(GYOOParser.OPAR, 0); }
+		public TerminalNode OPAR() { return getToken(rougeParser.OPAR, 0); }
 		public For_statementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_for_statement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterFor_statement(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterFor_statement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitFor_statement(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitFor_statement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitFor_statement(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitFor_statement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -711,11 +711,11 @@ public class GYOOParser extends Parser {
 	}
 
 	public static class Switch_statementContext extends ParserRuleContext {
-		public TerminalNode OBRACE() { return getToken(GYOOParser.OBRACE, 0); }
+		public TerminalNode OBRACE() { return getToken(rougeParser.OBRACE, 0); }
 		public Switch_expressionContext switch_expression(int i) {
 			return getRuleContext(Switch_expressionContext.class,i);
 		}
-		public TerminalNode CBRACE() { return getToken(GYOOParser.CBRACE, 0); }
+		public TerminalNode CBRACE() { return getToken(rougeParser.CBRACE, 0); }
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
@@ -731,15 +731,15 @@ public class GYOOParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_switch_statement; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterSwitch_statement(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterSwitch_statement(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitSwitch_statement(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitSwitch_statement(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitSwitch_statement(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitSwitch_statement(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -810,15 +810,15 @@ public class GYOOParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_switch_expression; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterSwitch_expression(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterSwitch_expression(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitSwitch_expression(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitSwitch_expression(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitSwitch_expression(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitSwitch_expression(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -874,15 +874,15 @@ public class GYOOParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_condition_block; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterCondition_block(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterCondition_block(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitCondition_block(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitCondition_block(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitCondition_block(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitCondition_block(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -909,8 +909,8 @@ public class GYOOParser extends Parser {
 	}
 
 	public static class Stat_blockContext extends ParserRuleContext {
-		public TerminalNode OBRACE() { return getToken(GYOOParser.OBRACE, 0); }
-		public TerminalNode CBRACE() { return getToken(GYOOParser.CBRACE, 0); }
+		public TerminalNode OBRACE() { return getToken(rougeParser.OBRACE, 0); }
+		public TerminalNode CBRACE() { return getToken(rougeParser.CBRACE, 0); }
 		public StatementContext statement() {
 			return getRuleContext(StatementContext.class,0);
 		}
@@ -926,15 +926,15 @@ public class GYOOParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_stat_block; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterStat_block(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterStat_block(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitStat_block(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitStat_block(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitStat_block(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitStat_block(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1022,48 +1022,48 @@ public class GYOOParser extends Parser {
 		}
 	}
 	public static class NotExprContext extends ExpressionContext {
-		public TerminalNode NOT() { return getToken(GYOOParser.NOT, 0); }
+		public TerminalNode NOT() { return getToken(rougeParser.NOT, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
 		public NotExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterNotExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterNotExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitNotExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitNotExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitNotExpr(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitNotExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	public static class MultiplicationExprContext extends ExpressionContext {
 		public Token op;
-		public TerminalNode MULT() { return getToken(GYOOParser.MULT, 0); }
+		public TerminalNode MULT() { return getToken(rougeParser.MULT, 0); }
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public TerminalNode MOD() { return getToken(GYOOParser.MOD, 0); }
+		public TerminalNode MOD() { return getToken(rougeParser.MOD, 0); }
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
 		}
-		public TerminalNode DIV() { return getToken(GYOOParser.DIV, 0); }
+		public TerminalNode DIV() { return getToken(rougeParser.DIV, 0); }
 		public MultiplicationExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterMultiplicationExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterMultiplicationExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitMultiplicationExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitMultiplicationExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitMultiplicationExpr(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitMultiplicationExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1074,15 +1074,15 @@ public class GYOOParser extends Parser {
 		public AtomExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterAtomExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterAtomExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitAtomExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitAtomExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitAtomExpr(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitAtomExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1090,22 +1090,22 @@ public class GYOOParser extends Parser {
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public TerminalNode OR() { return getToken(GYOOParser.OR, 0); }
+		public TerminalNode OR() { return getToken(rougeParser.OR, 0); }
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
 		}
 		public OrExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterOrExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterOrExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitOrExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitOrExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitOrExpr(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitOrExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1114,75 +1114,75 @@ public class GYOOParser extends Parser {
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public TerminalNode PLUS() { return getToken(GYOOParser.PLUS, 0); }
-		public TerminalNode MINUS() { return getToken(GYOOParser.MINUS, 0); }
+		public TerminalNode PLUS() { return getToken(rougeParser.PLUS, 0); }
+		public TerminalNode MINUS() { return getToken(rougeParser.MINUS, 0); }
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
 		}
 		public AdditiveExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterAdditiveExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterAdditiveExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitAdditiveExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitAdditiveExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitAdditiveExpr(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitAdditiveExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	public static class RelationalExprContext extends ExpressionContext {
 		public Token op;
-		public TerminalNode LTEQ() { return getToken(GYOOParser.LTEQ, 0); }
-		public TerminalNode LT() { return getToken(GYOOParser.LT, 0); }
-		public TerminalNode GT() { return getToken(GYOOParser.GT, 0); }
+		public TerminalNode LTEQ() { return getToken(rougeParser.LTEQ, 0); }
+		public TerminalNode LT() { return getToken(rougeParser.LT, 0); }
+		public TerminalNode GT() { return getToken(rougeParser.GT, 0); }
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
 		}
-		public TerminalNode GTEQ() { return getToken(GYOOParser.GTEQ, 0); }
+		public TerminalNode GTEQ() { return getToken(rougeParser.GTEQ, 0); }
 		public RelationalExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterRelationalExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterRelationalExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitRelationalExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitRelationalExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitRelationalExpr(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitRelationalExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	public static class EqualityExprContext extends ExpressionContext {
 		public Token op;
-		public TerminalNode NEQ() { return getToken(GYOOParser.NEQ, 0); }
+		public TerminalNode NEQ() { return getToken(rougeParser.NEQ, 0); }
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public TerminalNode EQ() { return getToken(GYOOParser.EQ, 0); }
+		public TerminalNode EQ() { return getToken(rougeParser.EQ, 0); }
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
 		}
 		public EqualityExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterEqualityExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterEqualityExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitEqualityExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitEqualityExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitEqualityExpr(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitEqualityExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1190,22 +1190,22 @@ public class GYOOParser extends Parser {
 		public ExpressionContext expression(int i) {
 			return getRuleContext(ExpressionContext.class,i);
 		}
-		public TerminalNode AND() { return getToken(GYOOParser.AND, 0); }
+		public TerminalNode AND() { return getToken(rougeParser.AND, 0); }
 		public List<ExpressionContext> expression() {
 			return getRuleContexts(ExpressionContext.class);
 		}
 		public AndExprContext(ExpressionContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterAndExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterAndExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitAndExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitAndExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitAndExpr(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitAndExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1383,110 +1383,110 @@ public class GYOOParser extends Parser {
 		}
 	}
 	public static class ParExprContext extends AtomContext {
-		public TerminalNode CPAR() { return getToken(GYOOParser.CPAR, 0); }
+		public TerminalNode CPAR() { return getToken(rougeParser.CPAR, 0); }
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
 		}
-		public TerminalNode OPAR() { return getToken(GYOOParser.OPAR, 0); }
+		public TerminalNode OPAR() { return getToken(rougeParser.OPAR, 0); }
 		public ParExprContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterParExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterParExpr(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitParExpr(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitParExpr(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitParExpr(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitParExpr(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	public static class BooleanAtomContext extends AtomContext {
-		public TerminalNode FALSE() { return getToken(GYOOParser.FALSE, 0); }
-		public TerminalNode TRUE() { return getToken(GYOOParser.TRUE, 0); }
+		public TerminalNode FALSE() { return getToken(rougeParser.FALSE, 0); }
+		public TerminalNode TRUE() { return getToken(rougeParser.TRUE, 0); }
 		public BooleanAtomContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterBooleanAtom(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterBooleanAtom(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitBooleanAtom(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitBooleanAtom(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitBooleanAtom(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitBooleanAtom(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	public static class IdAtomContext extends AtomContext {
-		public TerminalNode ID() { return getToken(GYOOParser.ID, 0); }
+		public TerminalNode ID() { return getToken(rougeParser.ID, 0); }
 		public IdAtomContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterIdAtom(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterIdAtom(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitIdAtom(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitIdAtom(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitIdAtom(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitIdAtom(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	public static class StringAtomContext extends AtomContext {
-		public TerminalNode STRING() { return getToken(GYOOParser.STRING, 0); }
+		public TerminalNode STRING() { return getToken(rougeParser.STRING, 0); }
 		public StringAtomContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterStringAtom(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterStringAtom(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitStringAtom(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitStringAtom(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitStringAtom(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitStringAtom(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	public static class NumberAtomContext extends AtomContext {
-		public TerminalNode NUMBER() { return getToken(GYOOParser.NUMBER, 0); }
-		public TerminalNode FLOAT() { return getToken(GYOOParser.FLOAT, 0); }
+		public TerminalNode NUMBER() { return getToken(rougeParser.NUMBER, 0); }
+		public TerminalNode FLOAT() { return getToken(rougeParser.FLOAT, 0); }
 		public NumberAtomContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterNumberAtom(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterNumberAtom(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitNumberAtom(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitNumberAtom(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitNumberAtom(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitNumberAtom(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 	public static class NullAtomContext extends AtomContext {
-		public TerminalNode NULL() { return getToken(GYOOParser.NULL, 0); }
+		public TerminalNode NULL() { return getToken(rougeParser.NULL, 0); }
 		public NullAtomContext(AtomContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).enterNullAtom(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).enterNullAtom(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GYOOListener ) ((GYOOListener)listener).exitNullAtom(this);
+			if ( listener instanceof rougeListener ) ((rougeListener)listener).exitNullAtom(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GYOOVisitor ) return ((GYOOVisitor<? extends T>)visitor).visitNullAtom(this);
+			if ( visitor instanceof rougeVisitor ) return ((rougeVisitor<? extends T>)visitor).visitNullAtom(this);
 			else return visitor.visitChildren(this);
 		}
 	}

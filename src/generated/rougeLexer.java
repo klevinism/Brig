@@ -1,6 +1,6 @@
 package generated;
 
-// Generated from GYOO.g4 by ANTLR 4.4
+// Generated from rouge.g4 by ANTLR 4.4
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -11,7 +11,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class GYOOLexer extends Lexer {
+public class rougeLexer extends Lexer {
 	static { RuntimeMetaData.checkVersion("4.4", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
@@ -47,13 +47,13 @@ public class GYOOLexer extends Lexer {
 	};
 
 
-	public GYOOLexer(CharStream input) {
+	public rougeLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "GYOO.g4"; }
+	public String getGrammarFileName() { return "rouge.g4"; }
 
 	@Override
 	public String[] getTokenNames() { return tokenNames; }

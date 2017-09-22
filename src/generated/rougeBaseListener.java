@@ -1,6 +1,6 @@
 package generated;
 
-// Generated from GYOO.g4 by ANTLR 4.4
+// Generated from rouge.g4 by ANTLR 4.4
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -8,335 +8,335 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of {@link GYOOListener},
+ * This class provides an empty implementation of {@link rougeListener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-public class GYOOBaseListener implements GYOOListener {
+public class rougeBaseListener implements rougeListener {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBooleanAtom(@NotNull GYOOParser.BooleanAtomContext ctx) { }
+	@Override public void enterBooleanAtom(@NotNull rougeParser.BooleanAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBooleanAtom(@NotNull GYOOParser.BooleanAtomContext ctx) { }
+	@Override public void exitBooleanAtom(@NotNull rougeParser.BooleanAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIdAtom(@NotNull GYOOParser.IdAtomContext ctx) { }
+	@Override public void enterIdAtom(@NotNull rougeParser.IdAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIdAtom(@NotNull GYOOParser.IdAtomContext ctx) { }
+	@Override public void exitIdAtom(@NotNull rougeParser.IdAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSwitch_expression(@NotNull GYOOParser.Switch_expressionContext ctx) { }
+	@Override public void enterSwitch_expression(@NotNull rougeParser.Switch_expressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSwitch_expression(@NotNull GYOOParser.Switch_expressionContext ctx) { }
+	@Override public void exitSwitch_expression(@NotNull rougeParser.Switch_expressionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCondition_block(@NotNull GYOOParser.Condition_blockContext ctx) { }
+	@Override public void enterCondition_block(@NotNull rougeParser.Condition_blockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCondition_block(@NotNull GYOOParser.Condition_blockContext ctx) { }
+	@Override public void exitCondition_block(@NotNull rougeParser.Condition_blockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAtomExpr(@NotNull GYOOParser.AtomExprContext ctx) { }
+	@Override public void enterAtomExpr(@NotNull rougeParser.AtomExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAtomExpr(@NotNull GYOOParser.AtomExprContext ctx) { }
+	@Override public void exitAtomExpr(@NotNull rougeParser.AtomExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProgram(@NotNull GYOOParser.ProgramContext ctx) { }
+	@Override public void enterProgram(@NotNull rougeParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitProgram(@NotNull GYOOParser.ProgramContext ctx) { }
+	@Override public void exitProgram(@NotNull rougeParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSwitch_statement(@NotNull GYOOParser.Switch_statementContext ctx) { }
+	@Override public void enterSwitch_statement(@NotNull rougeParser.Switch_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSwitch_statement(@NotNull GYOOParser.Switch_statementContext ctx) { }
+	@Override public void exitSwitch_statement(@NotNull rougeParser.Switch_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAdditiveExpr(@NotNull GYOOParser.AdditiveExprContext ctx) { }
+	@Override public void enterAdditiveExpr(@NotNull rougeParser.AdditiveExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAdditiveExpr(@NotNull GYOOParser.AdditiveExprContext ctx) { }
+	@Override public void exitAdditiveExpr(@NotNull rougeParser.AdditiveExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParExpr(@NotNull GYOOParser.ParExprContext ctx) { }
+	@Override public void enterParExpr(@NotNull rougeParser.ParExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParExpr(@NotNull GYOOParser.ParExprContext ctx) { }
+	@Override public void exitParExpr(@NotNull rougeParser.ParExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatement(@NotNull GYOOParser.StatementContext ctx) { }
+	@Override public void enterStatement(@NotNull rougeParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatement(@NotNull GYOOParser.StatementContext ctx) { }
+	@Override public void exitStatement(@NotNull rougeParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBlock(@NotNull GYOOParser.BlockContext ctx) { }
+	@Override public void enterBlock(@NotNull rougeParser.BlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBlock(@NotNull GYOOParser.BlockContext ctx) { }
+	@Override public void exitBlock(@NotNull rougeParser.BlockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWhile_statement(@NotNull GYOOParser.While_statementContext ctx) { }
+	@Override public void enterWhile_statement(@NotNull rougeParser.While_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitWhile_statement(@NotNull GYOOParser.While_statementContext ctx) { }
+	@Override public void exitWhile_statement(@NotNull rougeParser.While_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrint_exp(@NotNull GYOOParser.Print_expContext ctx) { }
+	@Override public void enterPrint_exp(@NotNull rougeParser.Print_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrint_exp(@NotNull GYOOParser.Print_expContext ctx) { }
+	@Override public void exitPrint_exp(@NotNull rougeParser.Print_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOrExpr(@NotNull GYOOParser.OrExprContext ctx) { }
+	@Override public void enterOrExpr(@NotNull rougeParser.OrExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOrExpr(@NotNull GYOOParser.OrExprContext ctx) { }
+	@Override public void exitOrExpr(@NotNull rougeParser.OrExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelationalExpr(@NotNull GYOOParser.RelationalExprContext ctx) { }
+	@Override public void enterRelationalExpr(@NotNull rougeParser.RelationalExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRelationalExpr(@NotNull GYOOParser.RelationalExprContext ctx) { }
+	@Override public void exitRelationalExpr(@NotNull rougeParser.RelationalExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumberAtom(@NotNull GYOOParser.NumberAtomContext ctx) { }
+	@Override public void enterNumberAtom(@NotNull rougeParser.NumberAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumberAtom(@NotNull GYOOParser.NumberAtomContext ctx) { }
+	@Override public void exitNumberAtom(@NotNull rougeParser.NumberAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNullAtom(@NotNull GYOOParser.NullAtomContext ctx) { }
+	@Override public void enterNullAtom(@NotNull rougeParser.NullAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNullAtom(@NotNull GYOOParser.NullAtomContext ctx) { }
+	@Override public void exitNullAtom(@NotNull rougeParser.NullAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrint(@NotNull GYOOParser.PrintContext ctx) { }
+	@Override public void enterPrint(@NotNull rougeParser.PrintContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrint(@NotNull GYOOParser.PrintContext ctx) { }
+	@Override public void exitPrint(@NotNull rougeParser.PrintContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFor_statement(@NotNull GYOOParser.For_statementContext ctx) { }
+	@Override public void enterFor_statement(@NotNull rougeParser.For_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFor_statement(@NotNull GYOOParser.For_statementContext ctx) { }
+	@Override public void exitFor_statement(@NotNull rougeParser.For_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNotExpr(@NotNull GYOOParser.NotExprContext ctx) { }
+	@Override public void enterNotExpr(@NotNull rougeParser.NotExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNotExpr(@NotNull GYOOParser.NotExprContext ctx) { }
+	@Override public void exitNotExpr(@NotNull rougeParser.NotExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStringAtom(@NotNull GYOOParser.StringAtomContext ctx) { }
+	@Override public void enterStringAtom(@NotNull rougeParser.StringAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStringAtom(@NotNull GYOOParser.StringAtomContext ctx) { }
+	@Override public void exitStringAtom(@NotNull rougeParser.StringAtomContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMultiplicationExpr(@NotNull GYOOParser.MultiplicationExprContext ctx) { }
+	@Override public void enterMultiplicationExpr(@NotNull rougeParser.MultiplicationExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMultiplicationExpr(@NotNull GYOOParser.MultiplicationExprContext ctx) { }
+	@Override public void exitMultiplicationExpr(@NotNull rougeParser.MultiplicationExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIf_statement(@NotNull GYOOParser.If_statementContext ctx) { }
+	@Override public void enterIf_statement(@NotNull rougeParser.If_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIf_statement(@NotNull GYOOParser.If_statementContext ctx) { }
+	@Override public void exitIf_statement(@NotNull rougeParser.If_statementContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStat_block(@NotNull GYOOParser.Stat_blockContext ctx) { }
+	@Override public void enterStat_block(@NotNull rougeParser.Stat_blockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStat_block(@NotNull GYOOParser.Stat_blockContext ctx) { }
+	@Override public void exitStat_block(@NotNull rougeParser.Stat_blockContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterEqualityExpr(@NotNull GYOOParser.EqualityExprContext ctx) { }
+	@Override public void enterEqualityExpr(@NotNull rougeParser.EqualityExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitEqualityExpr(@NotNull GYOOParser.EqualityExprContext ctx) { }
+	@Override public void exitEqualityExpr(@NotNull rougeParser.EqualityExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssign(@NotNull GYOOParser.AssignContext ctx) { }
+	@Override public void enterAssign(@NotNull rougeParser.AssignContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAssign(@NotNull GYOOParser.AssignContext ctx) { }
+	@Override public void exitAssign(@NotNull rougeParser.AssignContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAndExpr(@NotNull GYOOParser.AndExprContext ctx) { }
+	@Override public void enterAndExpr(@NotNull rougeParser.AndExprContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAndExpr(@NotNull GYOOParser.AndExprContext ctx) { }
+	@Override public void exitAndExpr(@NotNull rougeParser.AndExprContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

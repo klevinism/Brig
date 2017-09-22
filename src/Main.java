@@ -5,8 +5,8 @@ import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import generated.GYOOLexer;
-import generated.GYOOParser;
+import generated.rougeLexer;
+import generated.rougeParser;
 
 public class Main{
 public static void main(String[] args) {
@@ -14,8 +14,8 @@ public static void main(String[] args) {
         ANTLRInputStream input = new ANTLRInputStream(
             new FileInputStream(args[0]));
 
-        GYOOLexer lexer = new GYOOLexer(input);
-        GYOOParser parser = new GYOOParser(new CommonTokenStream(lexer));
+        rougeLexer lexer = new rougeLexer(input);
+        rougeParser parser = new rougeParser(new CommonTokenStream(lexer));
         ParseTree tree = parser.program();
         EvalVisitor visitor = new EvalVisitor();
         visitor.visit(tree);

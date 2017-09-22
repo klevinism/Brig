@@ -6,3 +6,11 @@
 /GYOOListener.java
 /GYOOParser.java
 /GYOOVisitor.java
+/rouge.tokens
+/rougeBaseListener.java
+/rougeBaseVisitor.java
+/rougeLexer.java
+/rougeLexer.tokens
+/rougeListener.java
+/rougeParser.java
+/rougeVisitor.java
