@@ -72,6 +72,12 @@ public interface rougeVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitParExpr(@NotNull rougeParser.ParExprContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link rougeParser#function}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction(@NotNull rougeParser.FunctionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link rougeParser#statement}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -89,6 +95,12 @@ public interface rougeVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitWhile_statement(@NotNull rougeParser.While_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link rougeParser#function_declaration}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFunction_declaration(@NotNull rougeParser.Function_declarationContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link rougeParser#print_exp}.
 	 * @param ctx the parse tree
@@ -162,6 +174,12 @@ public interface rougeVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitIf_statement(@NotNull rougeParser.If_statementContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link rougeParser#arguments}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArguments(@NotNull rougeParser.ArgumentsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link rougeParser#stat_block}.
 	 * @param ctx the parse tree

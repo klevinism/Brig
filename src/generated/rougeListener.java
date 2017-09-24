@@ -110,6 +110,16 @@ public interface rougeListener extends ParseTreeListener {
 	 */
 	void exitParExpr(@NotNull rougeParser.ParExprContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link rougeParser#function}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction(@NotNull rougeParser.FunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link rougeParser#function}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction(@NotNull rougeParser.FunctionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link rougeParser#statement}.
 	 * @param ctx the parse tree
 	 */
@@ -139,6 +149,16 @@ public interface rougeListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitWhile_statement(@NotNull rougeParser.While_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link rougeParser#function_declaration}.
+	 * @param ctx the parse tree
+	 */
+	void enterFunction_declaration(@NotNull rougeParser.Function_declarationContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link rougeParser#function_declaration}.
+	 * @param ctx the parse tree
+	 */
+	void exitFunction_declaration(@NotNull rougeParser.Function_declarationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link rougeParser#print_exp}.
 	 * @param ctx the parse tree
@@ -263,6 +283,16 @@ public interface rougeListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIf_statement(@NotNull rougeParser.If_statementContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link rougeParser#arguments}.
+	 * @param ctx the parse tree
+	 */
+	void enterArguments(@NotNull rougeParser.ArgumentsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link rougeParser#arguments}.
+	 * @param ctx the parse tree
+	 */
+	void exitArguments(@NotNull rougeParser.ArgumentsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link rougeParser#stat_block}.
 	 * @param ctx the parse tree

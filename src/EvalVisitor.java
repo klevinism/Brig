@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.antlr.v4.runtime.misc.NotNull;
+import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 import generated.rougeBaseVisitor;
 import generated.rougeParser;
@@ -66,7 +67,7 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
         }
     }
 
-    @Override
+    @Override	
     public TypeWrapper visitRelationalExpr(@NotNull rougeParser.RelationalExprContext ctx) {
     	TypeWrapper left = this.visit(ctx.expression(0));
     	TypeWrapper right = this.visit(ctx.expression(1));
@@ -112,7 +113,6 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
         }
         return tw; 
 	}
-
 
     @Override
     public TypeWrapper visitMultiplicationExpr(@NotNull rougeParser.MultiplicationExprContext ctx) {
@@ -209,8 +209,27 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
         return TypeWrapper.VOID;
 	}
 
+    
+	/*@Override public TypeWrapper visitFunction(rougeParser.FunctionContext ctx) { 
+		String id = ctx.ID().getText();
+		TypeWrapper args = null;
+		if(ctx.arguments() != null)
+			args = this.visit(ctx.arguments());
+		TypeWrapper stat_block = new TypeWrapper(ctx.stat_block());
+		return memory.put(id, stat_block);
+	}
 	
+	@Override public TypeWrapper visitFunction_declaration(rougeParser.Function_declarationContext ctx) { 
+		String id = ctx.ID().getText();
+		TypeWrapper args = null;
+		if(ctx.arguments() != null)
+			args = this.visit(ctx.arguments());//?????
+		
+		TypeWrapper stat_block = this.visit(memory.get(id).VOID);
+		return visitChildren(ctx); 
+	}*/
 
+	
     @Override 
     public TypeWrapper visitStat_block(rougeParser.Stat_blockContext ctx) {
     	return visitChildren(ctx); 
