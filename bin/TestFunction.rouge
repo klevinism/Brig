@@ -1,9 +1,14 @@
 begin
 
 let a be 2
-hi()
+
+
 function hi(){
 	print a
 }
+
+hi()
+
+
 
 end

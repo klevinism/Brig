@@ -3,11 +3,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 
 import generated.rougeBaseVisitor;
 import generated.rougeParser;
 import generated.rougeParser.Condition_blockContext;
+import generated.rougeParser.Stat_blockContext;
 import generated.rougeParser.Switch_expressionContext;
 import wrapper.TypeWrapper;
 
@@ -17,11 +17,16 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
     public static final double SMALL_VALUE = 0.00000000001;
 
     // store variables (there's only one global scope!)
-    private Map<String, TypeWrapper> memory = new HashMap<String, TypeWrapper>();
+    private Map<String, TypeWrapper> memory = new HashMap<String, TypeWrapper>();    
 
+    // store methods
+    private Map<String, Stat_blockContext> memoryFunctions = new HashMap<String, Stat_blockContext>();
+    
     // assignment/id overrides
     @Override
     public TypeWrapper visitAssign(rougeParser.AssignContext ctx) {
+    	System.out.println(ctx.getText());
+
         String id = ctx.ID().getText();
         TypeWrapper tw = this.visit(ctx.expression());
         return memory.put(id, tw);
@@ -132,7 +137,6 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
         }
     }
     
- // if override
     @Override
     public TypeWrapper visitIf_statement(rougeParser.If_statementContext ctx) {
         List<rougeParser.Condition_blockContext> conditions =  ctx.condition_block();
@@ -209,25 +213,34 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
         return TypeWrapper.VOID;
 	}
 
-    
-	/*@Override public TypeWrapper visitFunction(rougeParser.FunctionContext ctx) { 
+    //TODO: Fixing ARGS !important!
+	@Override public TypeWrapper visitFunction(rougeParser.FunctionContext ctx) { 
 		String id = ctx.ID().getText();
 		TypeWrapper args = null;
 		if(ctx.arguments() != null)
 			args = this.visit(ctx.arguments());
-		TypeWrapper stat_block = new TypeWrapper(ctx.stat_block());
-		return memory.put(id, stat_block);
+		
+		if(memory.get(id) != null)
+			return memory.put(id, this.visit(ctx.stat_block()));	//TODO: Needs to check if stat_block has return
+		else
+			memoryFunctions.put(id, ctx.stat_block());	//Save functions body with id -> visitFunction_declaration
+		return null;
 	}
 	
 	@Override public TypeWrapper visitFunction_declaration(rougeParser.Function_declarationContext ctx) { 
 		String id = ctx.ID().getText();
+		TypeWrapper stat_block = new TypeWrapper("");
 		TypeWrapper args = null;
 		if(ctx.arguments() != null)
 			args = this.visit(ctx.arguments());//?????
 		
-		TypeWrapper stat_block = this.visit(memory.get(id).VOID);
-		return visitChildren(ctx); 
-	}*/
+		if(memoryFunctions.get(id) != null){
+			 stat_block = this.visit(memoryFunctions.get(id));
+			 return stat_block.VOID;			//TODO: Needs to check if function has return. Object
+		}	
+		else
+			return memory.put(id, stat_block);	//Empty initialization -> visitFunction
+	}
 
 	
     @Override 

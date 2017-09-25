@@ -1,4 +1,4 @@
-// Define a grammar called Hello
+// Define a grammar called Rouge
 grammar rouge;
 program   : 'begin' block+ 'end';
 
@@ -8,7 +8,7 @@ block
 
 statement 
 	: assign
-	| print 
+	| print
 	| if_statement
 	| while_statement
 	| for_statement
@@ -36,7 +36,7 @@ if_statement
 	;
 	
 while_statement
-	: 'while' OPAR? expression*  CPAR? 'do' stat_block 
+	: 'while' OPAR? expression*  CPAR? 'do' stat_block  
 	;
 	
 for_statement
