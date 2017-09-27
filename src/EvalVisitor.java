@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
@@ -8,6 +9,7 @@ import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
 import generated.rougeBaseVisitor;
 import generated.rougeParser;
 import generated.rougeParser.Condition_blockContext;
+import generated.rougeParser.Stat_blockContext;
 import generated.rougeParser.Switch_expressionContext;
 import wrapper.TypeWrapper;
 
@@ -210,16 +212,17 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
 	}
 
     
-	/*@Override public TypeWrapper visitFunction(rougeParser.FunctionContext ctx) { 
-		String id = ctx.ID().getText();
-		TypeWrapper args = null;
-		if(ctx.arguments() != null)
-			args = this.visit(ctx.arguments());
-		TypeWrapper stat_block = new TypeWrapper(ctx.stat_block());
+	@Override public TypeWrapper visitFunction(rougeParser.FunctionContext ctx) {
+		String methodName = ctx.ID().getText();
+        Stat_blockContext instructionVisitor = new Stat_blockContext(instructionVisitor, 0);
+        List<Stat_blockContext> instructions = ctx.stat_block()
+                .stream()
+                .map(instruction -> instruction.accept(instructionVisitor))
+                .collect(toList());
 		return memory.put(id, stat_block);
 	}
-	
-	@Override public TypeWrapper visitFunction_declaration(rougeParser.Function_declarationContext ctx) { 
+
+	/*@Override public TypeWrapper visitFunction_declaration(rougeParser.Function_declarationContext ctx) { 
 		String id = ctx.ID().getText();
 		TypeWrapper args = null;
 		if(ctx.arguments() != null)
@@ -228,7 +231,6 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
 		TypeWrapper stat_block = this.visit(memory.get(id).VOID);
 		return visitChildren(ctx); 
 	}*/
-
 	
     @Override 
     public TypeWrapper visitStat_block(rougeParser.Stat_blockContext ctx) {
