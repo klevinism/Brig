@@ -1,0 +1,14 @@
+begin
+
+let a be 2
+
+
+function hi(){
+	print a
+}
+
+hi()
+
+
+
+end
