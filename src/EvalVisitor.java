@@ -5,14 +5,15 @@ import java.util.function.Function;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
-import generated.rougeBaseVisitor;
-import generated.rougeParser;
-import generated.rougeParser.Condition_blockContext;
-import generated.rougeParser.Stat_blockContext;
-import generated.rougeParser.Switch_expressionContext;
+import generated.brigBaseVisitor;
+import generated.brigParser;
+import generated.brigParser.Condition_blockContext;
+import generated.brigParser.ExpressionContext;
+import generated.brigParser.Stat_blockContext;
+import generated.brigParser.Switch_expressionContext;
 import wrapper.TypeWrapper;
 
-public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
+public class EvalVisitor extends brigBaseVisitor<TypeWrapper>{
 
     // used to compare floating point numbers
     public static final double SMALL_VALUE = 0.00000000001;
@@ -25,7 +26,7 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
     
     // assignment/id overrides
     @Override
-    public TypeWrapper visitAssign(rougeParser.AssignContext ctx) {
+    public TypeWrapper visitAssign(brigParser.AssignContext ctx) {
     	System.out.println(ctx.getText());
 
         String id = ctx.ID().getText();
@@ -34,84 +35,84 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
     }
     
     @Override
-    public TypeWrapper visitNumberAtom(rougeParser.NumberAtomContext ctx){
+    public TypeWrapper visitNumberAtom(brigParser.NumberAtomContext ctx){
         return new TypeWrapper(Integer.parseInt(ctx.getText()));
     }
     
     @Override
-    public TypeWrapper visitBooleanAtom(rougeParser.BooleanAtomContext ctx) {
+    public TypeWrapper visitBooleanAtom(brigParser.BooleanAtomContext ctx) {
         return new TypeWrapper(Boolean.valueOf(ctx.getText()));
     }
     
     // expr overrides
     @Override
-    public TypeWrapper visitParExpr(rougeParser.ParExprContext ctx) {
+    public TypeWrapper visitParExpr(brigParser.ParExprContext ctx) {
         return this.visit(ctx.expression());
     }
     
     @Override
-    public TypeWrapper visitStringAtom(rougeParser.StringAtomContext ctx){        
+    public TypeWrapper visitStringAtom(brigParser.StringAtomContext ctx){        
     	String str = ctx.getText();
     	str = str.substring(1, str.length() - 1).replace("\"\"", "\"");
     	return new TypeWrapper(str);
     }
 
     @Override
-    public TypeWrapper visitAdditiveExpr(@NotNull rougeParser.AdditiveExprContext ctx) {
+    public TypeWrapper visitAdditiveExpr(@NotNull brigParser.AdditiveExprContext ctx) {
     	TypeWrapper left = this.visit(ctx.expression(0));
     	TypeWrapper right = this.visit(ctx.expression(1));
 	    	
         switch (ctx.op.getType()) {
-            case rougeParser.PLUS:
+            case brigParser.PLUS:
                 return left.isInteger() && right.isInteger() ?
                         new TypeWrapper(left.asInteger() + right.asInteger()) :
                         new TypeWrapper(left.asString() + right.asString());
-            case rougeParser.MINUS:
+            case brigParser.MINUS:
                 return new TypeWrapper(left.asInteger() - right.asInteger());
             default:
-                throw new RuntimeException("unknown operator: " + rougeParser.tokenNames[ctx.op.getType()]);
+                throw new RuntimeException("unknown operator: " + brigParser.tokenNames[ctx.op.getType()]);
         }
     }
 
     @Override	
-    public TypeWrapper visitRelationalExpr(@NotNull rougeParser.RelationalExprContext ctx) {
+    public TypeWrapper visitRelationalExpr(brigParser.RelationalExprContext ctx) {
     	TypeWrapper left = this.visit(ctx.expression(0));
     	TypeWrapper right = this.visit(ctx.expression(1));
 
         switch (ctx.op.getType()) {
-            case rougeParser.LT:
+            case brigParser.LT:
                 return new TypeWrapper(left.asInteger() < right.asInteger());
-            case rougeParser.LTEQ:
+            case brigParser.LTEQ:
                 return new TypeWrapper(left.asInteger() <= right.asInteger());
-            case rougeParser.GT:
+            case brigParser.GT:
                 return new TypeWrapper(left.asInteger() > right.asInteger());
-            case rougeParser.GTEQ:
+            case brigParser.GTEQ:
                 return new TypeWrapper(left.asInteger() >= right.asInteger());
             default:
-                throw new RuntimeException("unknown operator: " + rougeParser.tokenNames[ctx.op.getType()]);
+                throw new RuntimeException("unknown operator: " + brigParser.tokenNames[ctx.op.getType()]);
         }
     }
 
     @Override
-    public TypeWrapper visitEqualityExpr(@NotNull rougeParser.EqualityExprContext ctx) {
+    public TypeWrapper visitEqualityExpr(@NotNull brigParser.EqualityExprContext ctx) {
     	TypeWrapper left = this.visit(ctx.expression(0));
     	TypeWrapper right = this.visit(ctx.expression(1));
 
     	switch (ctx.op.getType()) {
-            case rougeParser.EQ:
+            case brigParser.EQ:
                 return left.isInteger() && right.isInteger() ?
                         new TypeWrapper(Math.abs(left.asInteger() - right.asInteger()) < SMALL_VALUE) :
                         new TypeWrapper(left.equals(right));
-            case rougeParser.NEQ:
+            case brigParser.NEQ:
                 return left.isInteger() && right.isInteger() ?
                         new TypeWrapper(Math.abs(left.asInteger() - right.asInteger()) >= SMALL_VALUE) :
                         new TypeWrapper(!left.equals(right));
             default:
-                throw new RuntimeException("unknown operator: " + rougeParser.tokenNames[ctx.op.getType()]);
+                throw new RuntimeException("unknown operator: " + brigParser.tokenNames[ctx.op.getType()]);
         }
     }
     
-	@Override public TypeWrapper visitIdAtom(@NotNull rougeParser.IdAtomContext ctx) { 
+	@Override public TypeWrapper visitIdAtom(@NotNull brigParser.IdAtomContext ctx) { 
 		String id = ctx.ID().getText();
 		TypeWrapper tw = memory.get(id);
         if(tw == null) {
@@ -121,26 +122,26 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
 	}
 
     @Override
-    public TypeWrapper visitMultiplicationExpr(@NotNull rougeParser.MultiplicationExprContext ctx) {
+    public TypeWrapper visitMultiplicationExpr(@NotNull brigParser.MultiplicationExprContext ctx) {
 
     	TypeWrapper left = this.visit(ctx.expression(0));
     	TypeWrapper right = this.visit(ctx.expression(1));
 
         switch (ctx.op.getType()) {
-            case rougeParser.MULT:
+            case brigParser.MULT:
                 return new TypeWrapper(left.asInteger() * right.asInteger());
-            case rougeParser.DIV:
+            case brigParser.DIV:
                 return new TypeWrapper(left.asInteger() / right.asInteger());
-            case rougeParser.MOD:
+            case brigParser.MOD:
                 return new TypeWrapper(left.asInteger() % right.asInteger());
             default:
-                throw new RuntimeException("unknown operator: " + rougeParser.tokenNames[ctx.op.getType()]);
+                throw new RuntimeException("unknown operator: " + brigParser.tokenNames[ctx.op.getType()]);
         }
     }
     
     @Override
-    public TypeWrapper visitIf_statement(rougeParser.If_statementContext ctx) {
-        List<rougeParser.Condition_blockContext> conditions =  ctx.condition_block();
+    public TypeWrapper visitIf_statement(brigParser.If_statementContext ctx) {
+        List<brigParser.Condition_blockContext> conditions =  ctx.condition_block();
 
         boolean evaluatedBlock = false;
 
@@ -162,7 +163,7 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
     }
     
 	@Override 
-	public TypeWrapper visitWhile_statement(rougeParser.While_statementContext ctx) { 
+	public TypeWrapper visitWhile_statement(brigParser.While_statementContext ctx) { 
 		TypeWrapper expression = this.visit(ctx.expression(0));
 		while(expression.asBoolean()){
 			this.visit(ctx.stat_block());
@@ -172,7 +173,7 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
 	}
 	
 	@Override 
-	public TypeWrapper visitFor_statement(rougeParser.For_statementContext ctx) {
+	public TypeWrapper visitFor_statement(brigParser.For_statementContext ctx) {
 		TypeWrapper assign = this.visit(ctx.assign());
 		TypeWrapper condition = this.visit(ctx.expression());
 		TypeWrapper stat_blck2 = null;
@@ -186,10 +187,10 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
 		return stat_blck2.VOID; 
 	}
 	
-	@Override public TypeWrapper visitSwitch_statement(rougeParser.Switch_statementContext ctx) { 
+	@Override public TypeWrapper visitSwitch_statement(brigParser.Switch_statementContext ctx) { 
 		TypeWrapper expression = this.visit(ctx.expression(0));
 		TypeWrapper switchStatement = null;
-		List<rougeParser.Switch_expressionContext>switchExpressionList = ctx.switch_expression();
+		List<brigParser.Switch_expressionContext>switchExpressionList = ctx.switch_expression();
 		
 		boolean eval = false;
 		
@@ -215,7 +216,7 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
 	}
 
     //TODO: Fixing ARGS !important!
-	@Override public TypeWrapper visitFunction(rougeParser.FunctionContext ctx) { 
+	@Override public TypeWrapper visitFunction(brigParser.FunctionContext ctx) { 
 		String id = ctx.ID().getText();
 		TypeWrapper args = null;
 		if(ctx.arguments() != null)
@@ -228,7 +229,9 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
 		return null;
 	}
 
-	@Override public TypeWrapper visitFunction_declaration(rougeParser.Function_declarationContext ctx) { 
+	
+	@Override public TypeWrapper visitFunction_declaration(brigParser.Function_declarationContext ctx) { 
+
 		String id = ctx.ID().getText();
 		TypeWrapper stat_block = new TypeWrapper("");
 		TypeWrapper args = null;
@@ -242,14 +245,23 @@ public class EvalVisitor extends rougeBaseVisitor<TypeWrapper>{
 		else
 			return memory.put(id, stat_block);	//Empty initialization -> visitFunction
 	}
+
+
+	@Override public TypeWrapper visitArguments(brigParser.ArgumentsContext ctx) { 
+		for(ExpressionContext args : ctx.expression()){
+			System.out.println(args.getText());
+			
+		}
+		return visitChildren(ctx); 
+	}
 	
     @Override 
-    public TypeWrapper visitStat_block(rougeParser.Stat_blockContext ctx) {
+    public TypeWrapper visitStat_block(brigParser.Stat_blockContext ctx) {
     	return visitChildren(ctx); 
     }
     
     @Override
-    public TypeWrapper visitPrint(rougeParser.PrintContext ctx){
+    public TypeWrapper visitPrint(brigParser.PrintContext ctx){
     	TypeWrapper output = this.visit(ctx.atom());
     	String printing = ctx.print_exp().getText();
     	switch(printing){
