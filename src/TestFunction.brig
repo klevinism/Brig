@@ -1,0 +1,12 @@
+begin
+
+let a be "a"
+
+
+hi()
+
+function hi(x,y,z){
+	print a
+}
+
+end

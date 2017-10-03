@@ -1,0 +1,10 @@
+begin
+	let a be 5
+	let b be a
+	let c be 10
+	add a to b
+	add 10 to a
+	print a 
+	print b
+	print c
+end
