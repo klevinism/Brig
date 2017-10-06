@@ -57,7 +57,7 @@ function_declaration
 
 	
 arguments
-	: expression (',' expression)*;
+	: (expression | assign) ((',' expression)* | (',' assign)*);
 
 	
 switch_expression
