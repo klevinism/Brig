@@ -1,8 +1,8 @@
 begin
 
-let la be 1
-
-function hi(let a be 10,let b be 12, let i be "hiiii"){
+//let la be 1
+la : 1
+function hi(a:10,let b be 12, let i be "hiiii"){
 	println b
 	
 	println a

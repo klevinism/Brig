@@ -19,7 +19,8 @@ statement
 	;
 
 assign    
-	: 'let' ID 'be'? expression? 
+	: ('let' ID 'be'? expression?)
+	| (ID ':'? expression?)
 	;
 	
 print     
