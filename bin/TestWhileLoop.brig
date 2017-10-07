@@ -11,7 +11,6 @@ also com.gyoo.util.*
 require com.gyoo.util.*
 */
 
-begin
 	let column be 10
 	let row be 10
 	
@@ -85,4 +84,3 @@ begin
 		println ""
 		let y be y + 1
 	}
-end
