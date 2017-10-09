@@ -17,7 +17,7 @@ public static void main(String[] args) {
         brigParser parser = new brigParser(new CommonTokenStream(lexer));
         
         ParseTree tree = parser.program();
-        EvalVisitor visitor = new EvalVisitor();
+        GlobalVisitor visitor = new GlobalVisitor();
         
         visitor.visit(tree);
     } catch (IOException e) {

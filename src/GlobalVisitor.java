@@ -1,37 +1,43 @@
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
-
-import org.antlr.v4.runtime.misc.NotNull;
 
 import generated.brigBaseVisitor;
 import generated.brigParser;
 import generated.brigParser.Condition_blockContext;
 import generated.brigParser.ExpressionContext;
-import generated.brigParser.Stat_blockContext;
 import generated.brigParser.Switch_expressionContext;
 import wrapper.TypeWrapper;
 
-public class EvalVisitor extends brigBaseVisitor<TypeWrapper>{
+public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{
 
     // used to compare floating point numbers
     public static final double SMALL_VALUE = 0.00000000001;
 
+    public static GlobalVisitor visitor = new GlobalVisitor();
+    
+    public static MethodVisitor methodVisitor = new MethodVisitor();
+    
     // store variables (there's only one global scope!)
-    private Map<String, TypeWrapper> memory = new HashMap<String, TypeWrapper>();    
+    public static Map<String, TypeWrapper> globalScopeVar = new HashMap<String, TypeWrapper>();    
 
     // store methods
-    private Map<String, Stat_blockContext> memoryFunctions = new HashMap<String, Stat_blockContext>();
+    private Map<String, MethodVisitor> functionMemory = new HashMap<String, MethodVisitor>();
+    
+    //store methodWrappers
+    private MethodVisitor methodWrapper = MethodVisitor.methodVisitor;
+    
+    
+    public  Map<String, TypeWrapper> getGlobalScopeMemory(){
+    	return globalScopeVar;
+    }
     
     // assignment/id overrides
     @Override
     public TypeWrapper visitAssign(brigParser.AssignContext ctx) {
-    	System.out.println(ctx.getText());
-
         String id = ctx.ID().getText();
         TypeWrapper tw = this.visit(ctx.expression());
-        return memory.put(id, tw);
+        return globalScopeVar.put(id, tw);
     }
     
     @Override
@@ -51,14 +57,14 @@ public class EvalVisitor extends brigBaseVisitor<TypeWrapper>{
     }
     
     @Override
-    public TypeWrapper visitStringAtom(brigParser.StringAtomContext ctx){        
+    public TypeWrapper visitStringAtom(brigParser.StringAtomContext ctx){       
     	String str = ctx.getText();
     	str = str.substring(1, str.length() - 1).replace("\"\"", "\"");
     	return new TypeWrapper(str);
     }
 
     @Override
-    public TypeWrapper visitAdditiveExpr(@NotNull brigParser.AdditiveExprContext ctx) {
+    public TypeWrapper visitAdditiveExpr(brigParser.AdditiveExprContext ctx) {
     	TypeWrapper left = this.visit(ctx.expression(0));
     	TypeWrapper right = this.visit(ctx.expression(1));
 	    	
@@ -74,7 +80,7 @@ public class EvalVisitor extends brigBaseVisitor<TypeWrapper>{
         }
     }
 
-    @Override	
+    @Override
     public TypeWrapper visitRelationalExpr(brigParser.RelationalExprContext ctx) {
     	TypeWrapper left = this.visit(ctx.expression(0));
     	TypeWrapper right = this.visit(ctx.expression(1));
@@ -94,7 +100,7 @@ public class EvalVisitor extends brigBaseVisitor<TypeWrapper>{
     }
 
     @Override
-    public TypeWrapper visitEqualityExpr(@NotNull brigParser.EqualityExprContext ctx) {
+    public TypeWrapper visitEqualityExpr( brigParser.EqualityExprContext ctx) {
     	TypeWrapper left = this.visit(ctx.expression(0));
     	TypeWrapper right = this.visit(ctx.expression(1));
 
@@ -111,18 +117,20 @@ public class EvalVisitor extends brigBaseVisitor<TypeWrapper>{
                 throw new RuntimeException("unknown operator: " + brigParser.tokenNames[ctx.op.getType()]);
         }
     }
-    
-	@Override public TypeWrapper visitIdAtom(@NotNull brigParser.IdAtomContext ctx) { 
+        
+	@Override public TypeWrapper visitIdAtom( brigParser.IdAtomContext ctx) { 
 		String id = ctx.ID().getText();
-		TypeWrapper tw = memory.get(id);
+		TypeWrapper tw = globalScopeVar.get(id);
         if(tw == null) {
-            throw new RuntimeException("no such variable: " + id);
+           if(methodVisitor.methodMemory.get(id) == null){
+               throw new RuntimeException("no such variable: " + id);
+           }
         }
-        return tw; 
+        return tw;
 	}
 
     @Override
-    public TypeWrapper visitMultiplicationExpr(@NotNull brigParser.MultiplicationExprContext ctx) {
+    public TypeWrapper visitMultiplicationExpr(brigParser.MultiplicationExprContext ctx) {
 
     	TypeWrapper left = this.visit(ctx.expression(0));
     	TypeWrapper right = this.visit(ctx.expression(1));
@@ -215,58 +223,25 @@ public class EvalVisitor extends brigBaseVisitor<TypeWrapper>{
         return TypeWrapper.VOID;
 	}
 
-    //TODO: Fixing ARGS !important!
-	@Override public TypeWrapper visitFunction(brigParser.FunctionContext ctx) { 
-		String id = ctx.ID().getText();
-		TypeWrapper args = null;
-		if(ctx.arguments() != null)
-			args = this.visit(ctx.arguments());
-		
-		if(memory.get(id) != null)
-			return memory.put(id, this.visit(ctx.stat_block()));	//TODO: Needs to check if stat_block has return
-		else
-			memoryFunctions.put(id, ctx.stat_block());	//Save functions body with id -> visitFunction_declaration
-		return null;
-	}
-
-	
-	@Override public TypeWrapper visitFunction_declaration(brigParser.Function_declarationContext ctx) { 
-
-		String id = ctx.ID().getText();
-		TypeWrapper stat_block = new TypeWrapper("");
-		TypeWrapper args = null;
-		if(ctx.arguments() != null)
-			args = this.visit(ctx.arguments());//?????
-		
-		if(memoryFunctions.get(id) != null){
-			 stat_block = this.visit(memoryFunctions.get(id));
-			 return stat_block.VOID;			//TODO: Needs to check if function has return. Object
-		}	
-		else
-			return memory.put(id, stat_block);	//Empty initialization -> visitFunction
-	}
-
-
-	@Override public TypeWrapper visitArguments(brigParser.ArgumentsContext ctx) { 
-		for(ExpressionContext args : ctx.expression()){
-			System.out.println(args.getText());
-			
-		}
-		return visitChildren(ctx); 
-	}
-	
     @Override 
     public TypeWrapper visitStat_block(brigParser.Stat_blockContext ctx) {
     	return visitChildren(ctx); 
     }
-    
+
     @Override
     public TypeWrapper visitPrint(brigParser.PrintContext ctx){
-    	TypeWrapper output = this.visit(ctx.atom());
+    	TypeWrapper output = new TypeWrapper("");
     	String printing = ctx.print_exp().getText();
+
+    	if(methodVisitor.visit(ctx.atom()) != null){
+    		output = methodVisitor.visit(ctx.atom());
+    	}else{
+
+    		output = this.visit(ctx.atom());
+    	}
     	switch(printing){
-    		case "print" :System.out.print(output);break;
-    		case "println" :System.out.println(output);break;
+    		case "print" : System.out.print(output); break;
+    		case "println" : System.out.println(output); break;
     		default : throw new RuntimeException("Undefined parameter" + printing);
     	}
         return output;

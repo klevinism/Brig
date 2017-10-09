@@ -1,12 +1,16 @@
 begin
 
-let a be "a"
+let la be 1
 
-
-hi()
-
-function hi(x,y,z){
-	print a
+function hi(let a be 10,let b be 12, let i be "hiiii"){
+	println b
+	
+	println a
+	
+	println i
+	
+	print la
 }
 
+hi(1,2,3)
 end
