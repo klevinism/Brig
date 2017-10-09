@@ -1,3 +1,4 @@
+begin
 	let column be 10
 	let row be 10
 	
@@ -52,3 +53,5 @@
 	
 	println ""
 	}
+
+end

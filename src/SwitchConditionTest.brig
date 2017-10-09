@@ -1,4 +1,4 @@
- 
+begin 
 let a be 177
 
 switch (a) do {
@@ -9,3 +9,5 @@ switch (a) do {
 	case 178 : print "!"
 	default : print "?"
 }
+
+end

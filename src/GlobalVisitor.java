@@ -170,6 +170,13 @@ public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{
         return TypeWrapper.VOID;
     }
     
+
+	@Override public TypeWrapper visitReturn_statement(brigParser.Return_statementContext ctx) {
+		//System.out.println(ctx.getText()+"ASDFasd");
+		return methodVisitor.visitChildren(ctx);
+	}
+
+    
 	@Override 
 	public TypeWrapper visitWhile_statement(brigParser.While_statementContext ctx) { 
 		TypeWrapper expression = this.visit(ctx.expression(0));

@@ -1,6 +1,6 @@
 // Define a grammar called Rouge
 grammar brig;
-program   : block+ EOF;
+program   : 'begin' block+ 'end';
 
 block
 	: statement+
@@ -15,6 +15,7 @@ statement
 	| switch_statement
 	| function
 	| function_declaration
+	| return_statement
 	| OTHER {System.err.println("unknown text: " + $OTHER.text);}
 	;
 
@@ -55,12 +56,14 @@ function
 function_declaration
 	: funName = ID '(' arguments? ')'
 	;
-
+	
+return_statement
+	: 'return' (expression? | statement?)
+	;
 	
 arguments
 	: (expression | assign) ((',' expression)* | (',' assign)*);
 
-	
 switch_expression
 	:	'case' expression ':' stat_block
 	|	'default' ':' statement

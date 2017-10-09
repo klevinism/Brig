@@ -160,6 +160,16 @@ public interface brigListener extends ParseTreeListener {
 	 */
 	void exitFunction_declaration(@NotNull brigParser.Function_declarationContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link brigParser#return_statement}.
+	 * @param ctx the parse tree
+	 */
+	void enterReturn_statement(@NotNull brigParser.Return_statementContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link brigParser#return_statement}.
+	 * @param ctx the parse tree
+	 */
+	void exitReturn_statement(@NotNull brigParser.Return_statementContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link brigParser#print_exp}.
 	 * @param ctx the parse tree
 	 */

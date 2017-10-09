@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.antlr.v4.runtime.misc.NotNull;
+
 import generated.brigBaseVisitor;
 import generated.brigParser;
 import generated.brigParser.Stat_blockContext;
@@ -68,7 +70,7 @@ public class MethodVisitor extends brigBaseVisitor<TypeWrapper>{
 		if(methodMemory.get(methodWrapper.getMethodName()) != null){
 			return GlobalVisitor.globalScopeVar.put(methodWrapper.getMethodName(),this.visit(methodWrapper.getMethodInstructions()));
 		}		
-		return this.visitChildren(ctx);
+		return visitChildren(ctx);
 	}
 
 	
@@ -84,9 +86,13 @@ public class MethodVisitor extends brigBaseVisitor<TypeWrapper>{
 		if(methodMemory.get(methodWrapper.getMethodName()) != null){
 			return GlobalVisitor.globalScopeVar.get(methodWrapper.getMethodName());
 		}
-		return this.visitChildren(ctx);
+		return visitChildren(ctx);
 	}
 	
+	@Override public TypeWrapper visitReturn_statement(brigParser.Return_statementContext ctx) {
+		System.out.println(ctx.getText()+"ASDFasd");
+		return this.visitChildren(ctx);
+	}
 
     @Override
     public TypeWrapper visitPrint(brigParser.PrintContext ctx){

@@ -1,3 +1,5 @@
+begin
+return 1
 
 //let la be 1
 la : 1
@@ -9,6 +11,8 @@ function hi(a:10,let b be 12, let i be "hiiii"){
 	println i
 	
 	print la
+	
+	return i
 }
-
 hi(1,2,3)
+end

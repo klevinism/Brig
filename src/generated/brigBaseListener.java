@@ -186,6 +186,18 @@ public class brigBaseListener implements brigListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterReturn_statement(@NotNull brigParser.Return_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitReturn_statement(@NotNull brigParser.Return_statementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterPrint_exp(@NotNull brigParser.Print_expContext ctx) { }
 	/**
 	 * {@inheritDoc}
