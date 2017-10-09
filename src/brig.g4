@@ -1,6 +1,6 @@
 // Define a grammar called Rouge
 grammar brig;
-program   : 'begin' block+ 'end';
+program   : block+ EOF;
 
 block
 	: statement+

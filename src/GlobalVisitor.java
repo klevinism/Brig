@@ -63,6 +63,15 @@ public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{
     	return new TypeWrapper(str);
     }
 
+	@Override public TypeWrapper visitFunction(brigParser.FunctionContext ctx) { 
+		return methodVisitor.visit(ctx);
+	}
+
+	
+	@Override public TypeWrapper visitFunction_declaration(brigParser.Function_declarationContext ctx) {
+		return methodVisitor.visit(ctx);
+	}
+    
     @Override
     public TypeWrapper visitAdditiveExpr(brigParser.AdditiveExprContext ctx) {
     	TypeWrapper left = this.visit(ctx.expression(0));
