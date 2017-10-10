@@ -67,7 +67,7 @@ public class MethodVisitor extends brigBaseVisitor<TypeWrapper>{
 		
 		if(methodMemory.get(methodWrapper.getMethodName()) != null){
 			return GlobalVisitor.globalScopeVar.put(methodWrapper.getMethodName(),this.visit(methodWrapper.getMethodInstructions()));
-		}		
+		}
 		return this.visitChildren(ctx);
 	}
 
