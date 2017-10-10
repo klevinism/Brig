@@ -6,7 +6,6 @@ import java.util.Map;
 
 import generated.brigBaseVisitor;
 import generated.brigParser;
-import generated.brigParser.Stat_blockContext;
 import wrapper.TypeWrapper;
 
 public class MethodVisitor extends brigBaseVisitor<TypeWrapper>{
@@ -59,41 +58,53 @@ public class MethodVisitor extends brigBaseVisitor<TypeWrapper>{
 		
 		methodWrapper.setMethodName(ctx.ID().getText());
 		methodWrapper.setMethodInstructions(ctx.stat_block());
-		if(ctx.arguments() != null){
-			methodVisitor.setMethodArgumentsName(ctx.arguments().getText());
-			if(methodWrapper.getMethodArgumentsValue() != null)
-				methodVisitor.bindArgValue();
-		}
 		
-		if(methodMemory.get(methodWrapper.getMethodName()) != null){
+		if(ctx.arguments() != null){
+			this.setMethodArgumentsName(ctx.arguments().getText());
+			if(methodWrapper.getMethodArgumentsValue() != null)
+				this.bindArgValue();
+		}
+
+		if(GlobalVisitor.globalScopeVar.get(methodWrapper.getMethodName()) != null){
 			return GlobalVisitor.globalScopeVar.put(methodWrapper.getMethodName(),this.visit(methodWrapper.getMethodInstructions()));
+<<<<<<< HEAD
 		}
 		return this.visitChildren(ctx);
+=======
+		}else{
+			return GlobalVisitor.globalScopeVar.put(methodWrapper.getMethodName(),new TypeWrapper(""));
+		}
+>>>>>>> branch 'master' of https://github.com/klevinism/Brig.git
 	}
 
 	
 	@Override public TypeWrapper visitFunction_declaration(brigParser.Function_declarationContext ctx) {
 		methodWrapper.setMethodName(ctx.ID().getText());
-	
+		
 		if(ctx.arguments() != null){
 			this.setMethodArgumentsValue(ctx.arguments().getText());
 			if(methodWrapper.getMethodArgumentsName() != null)
 				this.bindArgValue();
 		}
-		
-		if(methodMemory.get(methodWrapper.getMethodName()) != null){
-			return GlobalVisitor.globalScopeVar.get(methodWrapper.getMethodName());
+
+		if(GlobalVisitor.globalScopeVar.get(methodWrapper.getMethodName()) != null){
+			return GlobalVisitor.globalScopeVar.put(methodWrapper.getMethodName(),this.visit(methodWrapper.getMethodInstructions()));
+		}else{
+			return GlobalVisitor.globalScopeVar.put(methodWrapper.getMethodName(),new TypeWrapper(""));
 		}
-		return this.visitChildren(ctx);
 	}
 	
-
+/*	@Override public TypeWrapper visitReturn_statement(brigParser.Return_statementContext ctx) {
+		System.out.println(ctx.getText()+"ASDFasd");
+		return this.visitChildren(ctx);
+	}
+*/
     @Override
     public TypeWrapper visitPrint(brigParser.PrintContext ctx){
     	TypeWrapper output = new TypeWrapper("");
     	String printing = ctx.print_exp().getText();
 
-    	if(GlobalVisitor.visitor.visit(ctx.atom()) != null){
+    	if(this.visit(ctx.atom()) == null){
     		output = GlobalVisitor.visitor.visit(ctx.atom());
     	}else{
     		output = this.visit(ctx.atom());
@@ -111,11 +122,12 @@ public class MethodVisitor extends brigBaseVisitor<TypeWrapper>{
 		List<TypeWrapper> argValue = methodWrapper.getMethodArgumentsValue();
 		
 		if(argName.size() == argName.size()){
-			for(int x=0; x<argName.size(); x++)
-			methodMemory.put(argName.get(x), argValue.get(x));
+			for(int x=0; x<argName.size(); x++){
+				methodMemory.put(argName.get(x), argValue.get(x));
+			}
 		}		
 	}
-	
+
 	public void setMethodArgumentsName(String argName){
 		if(argName != null){
 			List<String> args = new ArrayList<String>();

@@ -1,16 +1,15 @@
-begin
 
-let la be 1
-
-function hi(let a be 10,let b be 12, let i be "hiiii"){
-	println b
-	
-	println a
-	
-	println i
-	
-	print la
-}
+//let la be 1
+la : 1
+i : 20
+b : "?"
 
 hi(1,2,3)
-end
+
+function hi(a, b, c){
+	println b
+	
+	return i
+}
+
+
