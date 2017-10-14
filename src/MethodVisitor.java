@@ -20,13 +20,7 @@ public class MethodVisitor extends brigBaseVisitor<TypeWrapper>{
 	
 	// stores method context to be executed when method gets called
 	public Map<String, Stat_blockContext> methodContext = new HashMap<String, Stat_blockContext>();
-    
-	// stores method arguments, only one scope of them
-    public Map<String, List<String>> methodArgumentsName = new HashMap<String, List<String>>(); 
 
-    // stores argument's value
-    public Map<String, List<TypeWrapper>> methodArgumentsValue= new HashMap<String, List<TypeWrapper>>();
-	
     @Override
     public TypeWrapper visitNumberAtom(brigParser.NumberAtomContext ctx){
         return new TypeWrapper(Integer.parseInt(ctx.getText()));
@@ -74,8 +68,8 @@ public class MethodVisitor extends brigBaseVisitor<TypeWrapper>{
 		String methodId = ctx.ID().getText();
 		Stat_blockContext methodInstructions = ctx.stat_block();
 		
-		methodWrapper.setMethodName(methodId);					//save method name
-		methodWrapper.setMethodInstructions(methodInstructions);//save method instructions
+		methodWrapper.setMethodName(methodId);						//save method name
+		methodWrapper.setMethodInstructions(methodInstructions);	//save method instructions
 		
 		methodContext.put(methodId, methodInstructions);
 		
@@ -123,14 +117,14 @@ public class MethodVisitor extends brigBaseVisitor<TypeWrapper>{
 			this.visit(assign);
 		}
 		
-		if(argsName.size() != 0)	// check if argument's name are stored
+		if(argsName.size() != 0)			// check if argument's names are stored
 			methodWrapper.setMethodArgumentName(argsName);
 		
 		for(brigParser.ExpressionContext exp : ctx.expression()){	// store function arguments
 			argsValue.add(this.visit(exp));
 		}
 		
-		if(argsValue.size() != 0)	// check if argument's value are stored
+		if(argsValue.size() != 0)			// check if argument's values are stored
 			methodWrapper.setMethodArgumentValue(argsValue);
 
 		if(methodWrapper.getMethodArgumentName() != null && methodWrapper.getMethodArgumentValue() != null)				
