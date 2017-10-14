@@ -5,7 +5,7 @@ import wrapper.TypeWrapper;
 
 public interface Method {
 	
-	public String getMethodName();
+    public String getMethodName();
 
 	public void setMethodName(String methodName);
 
@@ -13,13 +13,11 @@ public interface Method {
 
 	public void setMethodInstructions(Stat_blockContext methodInstructions);
 
-	public List<String> getMethodArgumentsName();
-
-	public void setMethodArgumentsName(List<String> methodArgumentsName);
-
-	public List<TypeWrapper> getMethodArgumentsValue();
-
-	public void setMethodArgumentsValue(List<TypeWrapper> methodArgumentsValue);
+	public List<String> getMethodArgumentName();
 	
-	public String toString();	
+	public void setMethodArgumentName(List<String> setMethodArgumentsName);
+
+	public List<TypeWrapper> getMethodArgumentValue();
+
+	public void setMethodArgumentValue(List<TypeWrapper> setMethodArgumentsValue);
 }

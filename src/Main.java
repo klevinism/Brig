@@ -9,19 +9,19 @@ import generated.brigLexer;
 import generated.brigParser;
 
 public class Main{
-public static void main(String[] args) {
-    try {
-        ANTLRInputStream input = new ANTLRInputStream(new FileInputStream(args[0]));
+	public static void main(String[] args) {
+	    try {
+	        ANTLRInputStream input = new ANTLRInputStream(new FileInputStream(args[0]));
+	
+	        brigLexer lexer = new brigLexer(input);
+	        brigParser parser = new brigParser(new CommonTokenStream(lexer));
 
-        brigLexer lexer = new brigLexer(input);
-        brigParser parser = new brigParser(new CommonTokenStream(lexer));
-        
-        ParseTree tree = parser.program();
-        GlobalVisitor visitor = new GlobalVisitor();
-        
-        visitor.visit(tree);
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
+	        ParseTree tree = parser.program();
+	        GlobalVisitor visitor = new GlobalVisitor();
+	        
+	        visitor.visit(tree);
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
 }

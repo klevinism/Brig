@@ -108,6 +108,12 @@ public interface brigVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitReturn_statement(@NotNull brigParser.Return_statementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link brigParser#importBlocks}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitImportBlocks(@NotNull brigParser.ImportBlocksContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link brigParser#print_exp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

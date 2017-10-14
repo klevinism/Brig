@@ -1,15 +1,15 @@
+import ("C:\Users\Silver\git\Brig\src\SwitchConditionTest.brig")
 
-//let la be 1
 la : 1
 i : 20
 b : "?"
 
-hi(1,2,3)
-
-function hi(a, b, c){
+function hi(let a,let b,let i){
 	println b
 	
-	return i
+	//return i
 }
 
+hi(1,28,3)
 
+lul()

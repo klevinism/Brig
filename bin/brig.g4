@@ -1,7 +1,11 @@
 // Define a grammar called Rouge
 grammar brig;
-program   : block+ EOF;
+program   : importBlocks* statement+ EOF;
 
+importBlocks
+	: 'import' atom
+	;
+	
 block
 	: statement+
 	;
@@ -58,7 +62,7 @@ function_declaration
 	;
 	
 return_statement
-	: 'return' (expression? | statement?)
+	: 'return' (statement? | expression?)
 	;
 	
 arguments
@@ -139,11 +143,10 @@ FLOAT
  : [0-9]+ '.' [0-9]* 
  | '.' [0-9]+
  ;
-
 STRING
  : '"' (~["\r\n] | '""')* '"'
- ;
- 
+ ; 
+
 COMMENT
     :   '/*' .*? '*/' -> channel(HIDDEN)
     ;
@@ -151,6 +154,7 @@ COMMENT
 LINE_COMMENT
     :   '//' ~[\r\n]* -> channel(HIDDEN)
     ;
+    
 OTHER
  : . 
  ;

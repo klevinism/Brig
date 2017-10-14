@@ -5,16 +5,16 @@ import wrapper.TypeWrapper;
 
 public class MethodWrapper implements Method {
 
-    private String methodName;
-    
-    private Stat_blockContext methodInstructions;
-    
-    private List<String> methodArgumentsName;
+	private String methodName;
 
-    private List<TypeWrapper> methodArgumentsValue;
-        
-    @Override
-	public String getMethodName() {
+	private Stat_blockContext methodInstructions;
+	
+	private List<String> methodArgumentsName;
+	
+	private List<TypeWrapper> methodArgumentsValue;
+	
+	@Override
+    public String getMethodName() {
 		return methodName;
 	}
 
@@ -27,38 +27,32 @@ public class MethodWrapper implements Method {
 	public Stat_blockContext getMethodInstructions() {
 		return methodInstructions;
 	}
-	
+
 	@Override
 	public void setMethodInstructions(Stat_blockContext methodInstructions) {
 		this.methodInstructions = methodInstructions;
 	}
 
-	@Override
-	public List<String> getMethodArgumentsName() {
+	public List<String> getMethodArgumentName() {
 		return methodArgumentsName;
 	}
 
-	@Override
-	public void setMethodArgumentsName(List<String> methodArgumentsName) {
-		this.methodArgumentsName = methodArgumentsName;
+	public void setMethodArgumentName(List<String> setMethodArgumentsName) {
+		this.methodArgumentsName = setMethodArgumentsName;
 	}
 
-	@Override
-	public List<TypeWrapper> getMethodArgumentsValue() {
+	public List<TypeWrapper> getMethodArgumentValue() {
 		return methodArgumentsValue;
 	}
 
-	@Override
-	public void setMethodArgumentsValue(List<TypeWrapper> methodArgumentsValue) {
-		this.methodArgumentsValue = methodArgumentsValue;
+	public void setMethodArgumentValue(List<TypeWrapper> setMethodArgumentsValue) {
+		this.methodArgumentsValue = setMethodArgumentsValue;
 	}
-	
 
 	@Override
 	public String toString() {
 		return "MethodWrapper [methodName=" + methodName + ", methodInstructions=" + methodInstructions
-				+ ", methodArgumentsName=" + methodArgumentsName + ", methodArgumentsValues=" + methodArgumentsValue
-				+ "]";
+				+ ", setMethodArgumentsName=" + methodArgumentsName + ", setMethodArgumentsValue="
+				+ methodArgumentsValue + "]";
 	}
-	
 }

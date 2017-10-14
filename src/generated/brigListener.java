@@ -170,6 +170,16 @@ public interface brigListener extends ParseTreeListener {
 	 */
 	void exitReturn_statement(@NotNull brigParser.Return_statementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link brigParser#importBlocks}.
+	 * @param ctx the parse tree
+	 */
+	void enterImportBlocks(@NotNull brigParser.ImportBlocksContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link brigParser#importBlocks}.
+	 * @param ctx the parse tree
+	 */
+	void exitImportBlocks(@NotNull brigParser.ImportBlocksContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link brigParser#print_exp}.
 	 * @param ctx the parse tree
 	 */
