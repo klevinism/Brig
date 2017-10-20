@@ -1,0 +1,4 @@
+
+function sqrt(let nr){
+	return nr * nr
+}
