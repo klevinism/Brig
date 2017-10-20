@@ -5,7 +5,7 @@ begin
 	for (let y be 0; y lower column; let y be y+1) do {
 	
 		
-		if(y lower column/2){
+		if(y lower column/2) do {
 		
 			for(let z be y; z lower row/2; let z be z+1) do {
 				print " "

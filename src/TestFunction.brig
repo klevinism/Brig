@@ -1,0 +1,5 @@
+//import ("C:\Users\Silver\git\Brig\src\SwitchConditionTest.brig")
+
+let la be "asdf"
+
+print la

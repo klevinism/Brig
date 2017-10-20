@@ -1,23 +1,31 @@
-// Define a grammar called Hello
-grammar GYOO;
-program   : 'begin' block+ 'end';
+// Define a grammar called Rouge
+grammar brig;
+program   : importBlocks* statement+ EOF;
 
+importBlocks
+	: 'import' atom
+	;
+	
 block
 	: statement+
 	;
 
 statement 
 	: assign
-	| print 
+	| print
 	| if_statement
 	| while_statement
 	| for_statement
 	| switch_statement
+	| function
+	| function_declaration
+	| return_statement
 	| OTHER {System.err.println("unknown text: " + $OTHER.text);}
 	;
 
 assign    
-	: 'let' ID 'be'? expression? 
+	: ('let' ID 'be'? expression?)
+	| (ID ':'? expression?)
 	;
 	
 print     
@@ -34,7 +42,7 @@ if_statement
 	;
 	
 while_statement
-	: 'while' OPAR? expression*  CPAR? 'do' stat_block 
+	: 'while' OPAR? expression*  CPAR? 'do' stat_block  
 	;
 	
 for_statement
@@ -45,6 +53,21 @@ switch_statement
 	: 'switch' expression* 'do' OBRACE switch_expression+ CBRACE
 	;
 	 	
+function
+	: 'function' funName = ID '(' arguments? ')' stat_block
+	;
+
+function_declaration
+	: funName = ID '(' arguments? ')'
+	;
+	
+return_statement
+	: 'return' (statement? | expression?)
+	;
+	
+arguments
+	: (expression | assign) ((',' expression)* | (',' assign)*);
+
 switch_expression
 	:	'case' expression ':' stat_block
 	|	'default' ':' statement
@@ -69,7 +92,6 @@ expression
  	| expression OR expression                          #orExpr
  	| atom                                 				#atomExpr 	
   	;
-
 
 atom
  	: OPAR expression CPAR  #parExpr
@@ -102,7 +124,6 @@ NOT : 'not';
 PRINT : 'print';
 PRINTLN : 'println';
 
-
 ASSIGN : '=';
 OPAR : '(';
 CPAR : ')';
@@ -112,21 +133,20 @@ CBRACE : '}';
 TRUE : 'true';
 FALSE : 'false';
 NULL : 'null';
-IF : 'if';
+IF : 'if'; 
 ELSE : 'else';
-
 WS : (' ' | '\t' | '\r' | '\n') + -> skip;
-ID     : [a-z]+;
+ID     : ('a'..'z' | 'A'..'Z'|'_')('a'..'z' | 'A'..'Z'|'0'..'9'|'_')* ;
+
 NUMBER : [0-9]+ ;
 FLOAT
  : [0-9]+ '.' [0-9]* 
  | '.' [0-9]+
  ;
-
 STRING
  : '"' (~["\r\n] | '""')* '"'
- ;
- 
+ ; 
+
 COMMENT
     :   '/*' .*? '*/' -> channel(HIDDEN)
     ;
@@ -134,6 +154,7 @@ COMMENT
 LINE_COMMENT
     :   '//' ~[\r\n]* -> channel(HIDDEN)
     ;
+    
 OTHER
  : . 
  ;
