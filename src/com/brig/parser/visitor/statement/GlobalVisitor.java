@@ -10,11 +10,13 @@ import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
+import com.brig.parser.domain.Scope;
+
 import generated.brigBaseVisitor;
-import antlr.brigLexer;
-import antlr.brigParser;
-import antlr.brigParser.Condition_blockContext;
-import antlr.brigParser.Switch_expressionContext;
+import generated.brigLexer;
+import generated.brigParser;
+import generated.brigParser.Condition_blockContext;
+import generated.brigParser.Switch_expressionContext;
 import wrapper.TypeWrapper;
 
 public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{
@@ -55,10 +57,8 @@ public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{
     // assignment/id overrides
     @Override
     public TypeWrapper visitAssign(brigParser.AssignContext ctx) {
-        String id = ctx.ID().getText();
-        TypeWrapper tw = this.visit(ctx.expression());
-        
-        return globalScopeVar.put(id, tw);
+        ctx.accept(new AssignVisitor(new Scope("Global")));
+        return null;
     }
     
     @Override
