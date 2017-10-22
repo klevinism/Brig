@@ -1,6 +1,7 @@
 package com.brig.parser.visitor.statement.node;
 
 import com.brig.parser.domain.Scope;
+import com.brig.parser.domain.expression.node.LocalVariable;
 import com.brig.parser.domain.wrapper.TypeWrapper;
 
 import generated.brigParser;
@@ -15,14 +16,12 @@ public class AtomVisitor extends brigBaseVisitor<TypeWrapper> {
 	}
 	
 	@Override public TypeWrapper visitIdAtom( brigParser.IdAtomContext ctx) { 
-		//String id = ctx.ID().getText();
-		TypeWrapper tw = new TypeWrapper("");//globalScopeVar.get(id);
-        //if(tw == null) {
-           //if(MethodVisitor.methodMemory.get(id) == null){
-             //  throw new RuntimeException("no such variable: " + id);
-           //}
-        //}
-        return tw;
+		String id = ctx.ID().getText();
+		LocalVariable tw = scope.getVariable(id);
+        if(tw == null) {
+               throw new RuntimeException("no such variable: " + id);
+        }
+        return tw.getValue();
 	}
 	
     @Override
@@ -34,12 +33,13 @@ public class AtomVisitor extends brigBaseVisitor<TypeWrapper> {
     public TypeWrapper visitBooleanAtom(brigParser.BooleanAtomContext ctx) {
         return new TypeWrapper(Boolean.valueOf(ctx.getText()));
     }
-	
+
     @Override
     public TypeWrapper visitStringAtom(brigParser.StringAtomContext ctx){       
     	String str = ctx.getText();
     	str = str.substring(1, str.length() - 1).replace("\"\"", "\"");
     	return new TypeWrapper(str);
     }
+    
     
 }

@@ -2,6 +2,8 @@ package com.brig.parser.visitor.statement.node;
 
 import com.brig.parser.domain.Scope;
 import com.brig.parser.domain.wrapper.TypeWrapper;
+import com.brig.parser.util.ConstantValue;
+import com.brig.parser.util.Util;
 
 import generated.brigParser;
 import generated.brigBaseVisitor;
@@ -11,18 +13,17 @@ public class ExpressionVisitor extends brigBaseVisitor<TypeWrapper> {
 	private ExpressionVisitor expressionVisitor;
 	
 	private AtomVisitor atomVisitor;
-
 	
 	public ExpressionVisitor(Scope scope){
 		atomVisitor = new AtomVisitor(scope);
-		expressionVisitor = this;
+		 this.expressionVisitor = this;
 	}
 	
     @Override
     public TypeWrapper visitRelationalExpr(brigParser.RelationalExprContext ctx) {
     	TypeWrapper left = ctx.expression(0).accept(expressionVisitor);
     	TypeWrapper right = ctx.expression(1).accept(expressionVisitor);
-
+    	
         switch (ctx.op.getType()) {
             case brigParser.LT:
                 return new TypeWrapper(left.asInteger() < right.asInteger());
@@ -36,7 +37,26 @@ public class ExpressionVisitor extends brigBaseVisitor<TypeWrapper> {
                 throw new RuntimeException("unknown operator: " + brigParser.tokenNames[ctx.op.getType()]);
         }
     }
-	
+    
+    @Override
+    public TypeWrapper visitEqualityExpr( brigParser.EqualityExprContext ctx) {
+    	TypeWrapper left = ctx.expression(0).accept(expressionVisitor);
+    	TypeWrapper right = ctx.expression(1).accept(expressionVisitor);
+
+    	switch (ctx.op.getType()) {
+            case brigParser.EQ:
+                return left.isInteger() && right.isInteger() ?
+                        new TypeWrapper(Math.abs(left.asInteger() - right.asInteger()) < ConstantValue.SMALL_VALUE) :
+                        new TypeWrapper(left.equals(right));
+            case brigParser.NEQ:
+                return left.isInteger() && right.isInteger() ?
+                        new TypeWrapper(Math.abs(left.asInteger() - right.asInteger()) >= ConstantValue.SMALL_VALUE) :
+                        new TypeWrapper(!left.equals(right));
+            default:
+                throw new RuntimeException("unknown operator: " + brigParser.tokenNames[ctx.op.getType()]);
+        }
+    }
+    
     @Override
     public TypeWrapper visitMultiplicationExpr(brigParser.MultiplicationExprContext ctx) {
     	TypeWrapper left = ctx.expression(0).accept(expressionVisitor);
@@ -70,6 +90,7 @@ public class ExpressionVisitor extends brigBaseVisitor<TypeWrapper> {
                 throw new RuntimeException("unknown operator: " + brigParser.tokenNames[ctx.op.getType()]);
         }
     }
+    
     
     @Override
     public TypeWrapper visitParExpr(brigParser.ParExprContext ctx) {

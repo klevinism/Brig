@@ -79,7 +79,6 @@ condition_block
  	
 stat_block
  	: OBRACE (block | expression) CBRACE
- 	| statement
  	;
  	 	
 expression
