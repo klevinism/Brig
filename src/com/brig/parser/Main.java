@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import com.brig.parser.visitor.statement.GlobalVisitor;
+import com.brig.parser.visitor.GlobalVisitor;
 
 import generated.brigLexer;
 import generated.brigParser;

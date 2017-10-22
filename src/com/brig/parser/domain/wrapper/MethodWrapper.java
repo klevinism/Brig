@@ -1,10 +1,10 @@
 package com.brig.parser.domain.wrapper;
 import java.util.List;
 
-import com.brig.parser.domain.Method;
+import com.brig.parser.domain.expression.Method;
 
 import generated.brigParser.Stat_blockContext;
-import wrapper.TypeWrapper;
+import com.brig.parser.domain.wrapper.TypeWrapper;
 
 public class MethodWrapper implements Method {
 

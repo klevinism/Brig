@@ -7,10 +7,12 @@ import java.util.Map;
 
 import com.brig.parser.domain.wrapper.MethodWrapper;
 
+import com.brig.parser.domain.wrapper.TypeWrapper;
+import com.brig.parser.visitor.GlobalVisitor;
+
 import generated.brigBaseVisitor;
 import generated.brigParser;
 import generated.brigParser.Stat_blockContext;
-import wrapper.TypeWrapper;
 
 public class MethodVisitor extends brigBaseVisitor<TypeWrapper>{
 	
@@ -140,12 +142,6 @@ public class MethodVisitor extends brigBaseVisitor<TypeWrapper>{
     public TypeWrapper visitPrint(brigParser.PrintContext ctx){
     	TypeWrapper output = new TypeWrapper("");
     	String printing = ctx.print_exp().getText();
-    	
-    	if(this.visit(ctx.expression()) == null){
-    		output = GlobalVisitor.visitor.visit(ctx.expression());
-    	}else{
-    		output = this.visit(ctx.expression());
-    	}
     	
     	switch(printing){
     		case "print" : System.out.print(output); break;

@@ -6,3 +6,9 @@
 /GYOOListener.java
 /GYOOParser.java
 /GYOOVisitor.java
+/brigBaseListener.java
+/brigBaseVisitor.java
+/brigLexer.java
+/brigListener.java
+/brigParser.java
+/brigVisitor.java

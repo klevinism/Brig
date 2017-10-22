@@ -99,13 +99,13 @@ public interface brigListener extends ParseTreeListener {
 	void exitAdditiveExpr(@NotNull brigParser.AdditiveExprContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code parExpr}
-	 * labeled alternative in {@link brigParser#atom}.
+	 * labeled alternative in {@link brigParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void enterParExpr(@NotNull brigParser.ParExprContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code parExpr}
-	 * labeled alternative in {@link brigParser#atom}.
+	 * labeled alternative in {@link brigParser#expression}.
 	 * @param ctx the parse tree
 	 */
 	void exitParExpr(@NotNull brigParser.ParExprContext ctx);

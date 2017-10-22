@@ -1,16 +1,2 @@
-/GYOO.g4
-/IfConditionTest.GYOO
-/SwitchConditionTest.GYOO
-/TestForLoop.GYOO
-/TestWhileLoop.GYOO
 /com/
 /generated/
-/operations.GYOO
-/IfConditionTest.brig
-/Instructions.txt
-/SwitchConditionTest.brig
-/TestForLoop.brig
-/TestFunction.brig
-/TestWhileLoop.brig
-/brig.g4
-/operations.brig

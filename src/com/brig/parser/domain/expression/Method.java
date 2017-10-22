@@ -1,8 +1,8 @@
-package com.brig.parser.domain;
+package com.brig.parser.domain.expression;
 import java.util.List;
 
 import generated.brigParser.Stat_blockContext;
-import wrapper.TypeWrapper;
+import com.brig.parser.domain.wrapper.TypeWrapper;
 
 public interface Method {
 	

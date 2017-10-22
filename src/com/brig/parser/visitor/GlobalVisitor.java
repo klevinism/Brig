@@ -1,9 +1,8 @@
-package com.brig.parser.visitor.statement;
+package com.brig.parser.visitor;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -15,12 +14,12 @@ import com.brig.parser.domain.Scope;
 import generated.brigBaseVisitor;
 import generated.brigLexer;
 import generated.brigParser;
-import generated.brigParser.Condition_blockContext;
-import generated.brigParser.Switch_expressionContext;
-import wrapper.TypeWrapper;
+import com.brig.parser.domain.wrapper.TypeWrapper;
+import com.brig.parser.visitor.statement.AssignVisitor;
+import com.brig.parser.visitor.statement.MethodVisitor;
+import com.brig.parser.visitor.statement.PrintVisitor;
 
-public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{
-
+public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{ 
 	
 	private Scope scope = new Scope("Global");
     // used to compare floating point numbers
@@ -59,13 +58,11 @@ public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{
     // assignment/id overrides
     @Override
     public TypeWrapper visitAssign(brigParser.AssignContext ctx) {
-        ctx.accept(new AssignVisitor(scope));
-        return null;
+        return ctx.accept(new AssignVisitor(scope));
     }
     
     @Override
     public TypeWrapper visitPrint(brigParser.PrintContext ctx){
-    	ctx.accept(new PrintVisitor(scope));
-        return null;
+        return ctx.accept(new PrintVisitor(scope));
     }
 }
