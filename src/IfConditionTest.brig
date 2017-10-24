@@ -6,5 +6,5 @@ let z be (22+11)
 if (c is 11)  { 
 	print z
 }else{
-	print a
+	print c
 }

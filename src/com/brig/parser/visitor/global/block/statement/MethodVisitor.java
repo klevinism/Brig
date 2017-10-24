@@ -1,4 +1,4 @@
-package com.brig.parser.visitor.statement;
+package com.brig.parser.visitor.global.block.statement;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.Map;
 import com.brig.parser.domain.wrapper.MethodWrapper;
 
 import com.brig.parser.domain.wrapper.TypeWrapper;
-import com.brig.parser.visitor.GlobalVisitor;
+import com.brig.parser.visitor.global.GlobalVisitor;
 
 import generated.brigBaseVisitor;
 import generated.brigParser;

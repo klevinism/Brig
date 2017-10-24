@@ -1,11 +1,11 @@
-package com.brig.parser.visitor.statement;
+package com.brig.parser.visitor.global.block.statement;
 
 import java.util.List;
 
 import com.brig.parser.domain.Scope;
 import com.brig.parser.domain.wrapper.TypeWrapper;
-import com.brig.parser.visitor.StatementBlockVisitor;
-import com.brig.parser.visitor.statement.node.ExpressionVisitor;
+import com.brig.parser.visitor.global.StatementBlockVisitor;
+import com.brig.parser.visitor.global.block.statement.node.ExpressionVisitor;
 
 import generated.brigParser;
 import generated.brigBaseVisitor;

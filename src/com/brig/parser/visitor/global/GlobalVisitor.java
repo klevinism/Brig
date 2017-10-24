@@ -1,4 +1,4 @@
-package com.brig.parser.visitor;
+package com.brig.parser.visitor.global;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,30 +11,30 @@ import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 import com.brig.parser.domain.Scope;
-
 import generated.brigBaseVisitor;
 import generated.brigLexer;
 import generated.brigParser;
 import com.brig.parser.domain.wrapper.TypeWrapper;
-import com.brig.parser.visitor.statement.AssignVisitor;
-import com.brig.parser.visitor.statement.MethodVisitor;
-import com.brig.parser.visitor.statement.PrintVisitor;
+import com.brig.parser.visitor.global.block.statement.MethodVisitor;
 
 public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{ 
 	
-	private Scope scope = new Scope("Global");
+	Scope scope;
+	
     // used to compare floating point numbers
     public static final double SMALL_VALUE = 0.00000000001;
 
-    // static reference to self
-    public static GlobalVisitor visitor = new GlobalVisitor();
-    
     // method visitor, visits only functions/methods
     public static MethodVisitor methodVisitor = new MethodVisitor();
     
     // store variables (there's only one global scope!)
     public static Map<String, TypeWrapper> globalScopeVar = new HashMap<String, TypeWrapper>();    
   
+    
+    public GlobalVisitor(Scope scope){
+    	this.scope = scope;
+    }
+    
 	@Override 
 	public TypeWrapper visitImportBlocks(brigParser.ImportBlocksContext ctx) { 
 		String importTxt = ctx.atom().getText();
@@ -61,5 +61,4 @@ public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{
 	public TypeWrapper visitStatement(@NotNull brigParser.StatementContext ctx) { 
 		return ctx.accept(new StatementVisitor(scope)); 
 	}
-
 }

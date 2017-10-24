@@ -1,13 +1,11 @@
-package com.brig.parser.visitor;
-
-import java.util.List;
+package com.brig.parser.visitor.global;
 
 import com.brig.parser.domain.Scope;
 import com.brig.parser.domain.wrapper.TypeWrapper;
-import com.brig.parser.visitor.statement.AssignVisitor;
-import com.brig.parser.visitor.statement.IfVisitor;
-import com.brig.parser.visitor.statement.PrintVisitor;
-import com.brig.parser.visitor.statement.WhileVisitor;
+import com.brig.parser.visitor.global.block.statement.AssignVisitor;
+import com.brig.parser.visitor.global.block.statement.IfVisitor;
+import com.brig.parser.visitor.global.block.statement.PrintVisitor;
+import com.brig.parser.visitor.global.block.statement.WhileVisitor;
 
 import generated.brigBaseVisitor;
 import generated.brigParser;
@@ -19,7 +17,6 @@ public class StatementVisitor extends brigBaseVisitor<TypeWrapper>{
 	public StatementVisitor(Scope scope){
 		this.scope = scope;
 	}
-	
 	
     // assignment/id overrides
     @Override
