@@ -1,13 +1,7 @@
 /GlobalVisitor.class
-/IfConditionTest.brig
-/Instructions.txt
 /Main.class
 /Method.class
 /MethodVisitor.class
+/wrapper/
 /MethodWrapper.class
-/SwitchConditionTest.brig
-/TestForLoop.brig
-/TestFunction.brig
-/TestWhileLoop.brig
-/brig.g4
-/operations.brig
+/generated/
