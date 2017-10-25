@@ -1,4 +1,4 @@
-// Define a grammar called Rouge
+// Define a grammar called brig
 grammar brig;
 program   : importBlocks* statement+ EOF;
 
@@ -23,7 +23,7 @@ statement
 	| OTHER {System.err.println("unknown text: " + $OTHER.text);}
 	;
 
-assign    
+assign
 	: ('let' ID 'be'? expression?)
 	| ('let' ID ':'? expression?)
 	;

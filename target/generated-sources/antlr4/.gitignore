@@ -1,14 +1,8 @@
-/GYOO.tokens
-/GYOOBaseListener.java
-/GYOOBaseVisitor.java
-/GYOOLexer.java
-/GYOOLexer.tokens
-/GYOOListener.java
-/GYOOParser.java
-/GYOOVisitor.java
+/brig.tokens
 /brigBaseListener.java
 /brigBaseVisitor.java
 /brigLexer.java
+/brigLexer.tokens
 /brigListener.java
 /brigParser.java
 /brigVisitor.java
