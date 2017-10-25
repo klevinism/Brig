@@ -12,3 +12,4 @@
 /brigListener.java
 /brigParser.java
 /brigVisitor.java
+/brigLexer.tokens
