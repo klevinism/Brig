@@ -1,13 +1,10 @@
-begin
-
-
 let a be true
 let c be 12
-let z be 22
+let z be (22+11)
 
 
-if (c is 12 )  { 
+if (c is 11)  { 
 	print z
+}else{
+	print c
 }
-
-end

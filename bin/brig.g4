@@ -1,4 +1,4 @@
-// Define a grammar called Rouge
+// Define a grammar called brig
 grammar brig;
 program   : importBlocks* statement+ EOF;
 
@@ -23,13 +23,13 @@ statement
 	| OTHER {System.err.println("unknown text: " + $OTHER.text);}
 	;
 
-assign    
+assign
 	: ('let' ID 'be'? expression?)
-	| (ID ':'? expression?)
+	| ('let' ID ':'? expression?)
 	;
-	
+
 print     
-	: print_exp atom? 
+	: print_exp expression? 
 	;
 	
 print_exp
@@ -40,7 +40,7 @@ print_exp
 if_statement
 	: 'if' condition_block (ELSE IF condition_block)* (ELSE stat_block)?
 	;
-	
+
 while_statement
 	: 'while' OPAR? expression*  CPAR? 'do' stat_block  
 	;
@@ -79,7 +79,6 @@ condition_block
  	
 stat_block
  	: OBRACE (block | expression) CBRACE
- 	| statement
  	;
  	 	
 expression
@@ -90,12 +89,12 @@ expression
  	| expression op=(EQ | NEQ) expression               	#equalityExpr
  	| expression AND expression                         #andExpr
  	| expression OR expression                          #orExpr
+ 	| OPAR expression CPAR  							#parExpr
  	| atom                                 				#atomExpr 	
   	;
 
 atom
- 	: OPAR expression CPAR  #parExpr
- 	| (NUMBER | FLOAT)  	#numberAtom
+ 	: (NUMBER | FLOAT)  	#numberAtom
  	| (TRUE | FALSE) 		#booleanAtom
  	| ID             		#idAtom
  	| STRING         		#stringAtom

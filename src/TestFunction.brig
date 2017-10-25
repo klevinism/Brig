@@ -1,15 +1,9 @@
-import ("C:\Users\Silver\git\Brig\src\SwitchConditionTest.brig")
+//import ("C:\Users\Silver\git\Brig\src\SwitchConditionTest.brig")
 
-la : 1
-i : 20
-b : "?"
+let la be ":-)"
 
-function hi(let a,let b,let i){
-	println b
-	
-	//return i
-}
+let z be ((24*2) + 2)
 
-hi(1,28,3)
+println z
 
-lul()
+//print la

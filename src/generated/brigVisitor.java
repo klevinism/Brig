@@ -66,7 +66,11 @@ public interface brigVisitor<T> extends ParseTreeVisitor<T> {
 	T visitAdditiveExpr(@NotNull brigParser.AdditiveExprContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code parExpr}
+<<<<<<< HEAD
+	 * labeled alternative in {@link brigParser#expression}.
+=======
 	 * labeled alternative in {@link brigParser#atom}.
+>>>>>>> refs/remotes/origin/master
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
