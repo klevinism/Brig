@@ -6,6 +6,7 @@
 /GYOOListener.java
 /GYOOParser.java
 /GYOOVisitor.java
+<<<<<<< HEAD
 /brigBaseListener.java
 /brigBaseVisitor.java
 /brigLexer.java
@@ -13,3 +14,21 @@
 /brigParser.java
 /brigVisitor.java
 /brigLexer.tokens
+=======
+/rouge.tokens
+/rougeBaseListener.java
+/rougeBaseVisitor.java
+/rougeLexer.java
+/rougeLexer.tokens
+/rougeListener.java
+/rougeParser.java
+/rougeVisitor.java
+/brig.tokens
+/brigBaseListener.java
+/brigBaseVisitor.java
+/brigLexer.java
+/brigLexer.tokens
+/brigListener.java
+/brigParser.java
+/brigVisitor.java
+>>>>>>> refs/remotes/origin/master

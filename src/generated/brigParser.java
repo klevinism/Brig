@@ -2061,6 +2061,7 @@ public class brigParser extends Parser {
 		"\u0106\3\2\2\2\u0108\u0107\3\2\2\2\u0109)\3\2\2\2$-\63=JORWZ\\`kpty}\u0084"+
 		"\u008c\u0095\u009d\u00a5\u00ad\u00b3\u00b6\u00b8\u00bc\u00c2\u00c9\u00cc"+
 		"\u00d6\u00de\u00ea\u00fe\u0100\u0108";
+
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
