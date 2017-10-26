@@ -26,18 +26,18 @@ public class ForVisitor extends brigBaseVisitor<TypeWrapper> {
 	
 	@Override 
 	public TypeWrapper visitFor_statement(@NotNull brigParser.For_statementContext ctx) {	
+		
+		@SuppressWarnings("unused")
 		TypeWrapper assign = ctx.assign(0).accept(this.assignVisitor);
 		TypeWrapper condition = ctx.expression().accept(this.expressionVisitor);
 		TypeWrapper body = null;
 		
 		while (condition.asBoolean()){
-			
 			body = ctx.stat_block().accept(this.statementBlockVisitor);		// step into for loop's {body block}
 			
-			condition = ctx.expression().accept(this.expressionVisitor);	// step into condition again
-			
-			assign = ctx.assign(1).accept(this.assignVisitor);				// second for loop's assignment
+			assign = ctx.assign(1).accept(this.assignVisitor);				// step into second for loop's assignment
 		
+			condition = ctx.expression().accept(this.expressionVisitor);	// step into condition again
 		}
 		
 		return body.VOID; 

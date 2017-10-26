@@ -23,7 +23,6 @@ public class ExpressionVisitor extends brigBaseVisitor<TypeWrapper> {
     public TypeWrapper visitRelationalExpr(brigParser.RelationalExprContext ctx) {
     	TypeWrapper left = ctx.expression(0).accept(expressionVisitor);
     	TypeWrapper right = ctx.expression(1).accept(expressionVisitor);
-    	
         switch (ctx.op.getType()) {
             case brigParser.LT:
                 return new TypeWrapper(left.asInteger() < right.asInteger());
