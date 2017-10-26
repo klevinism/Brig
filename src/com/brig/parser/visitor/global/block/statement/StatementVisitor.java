@@ -1,11 +1,14 @@
 package com.brig.parser.visitor.global.block.statement;
 
+import org.antlr.v4.runtime.misc.NotNull;
+
 import com.brig.parser.domain.Scope;
 import com.brig.parser.domain.wrapper.TypeWrapper;
 import com.brig.parser.visitor.global.block.statement.node.AssignVisitor;
 import com.brig.parser.visitor.global.block.statement.node.ForVisitor;
 import com.brig.parser.visitor.global.block.statement.node.IfVisitor;
 import com.brig.parser.visitor.global.block.statement.node.PrintVisitor;
+import com.brig.parser.visitor.global.block.statement.node.SwitchStatement;
 import com.brig.parser.visitor.global.block.statement.node.WhileVisitor;
 
 import generated.brigBaseVisitor;
@@ -19,29 +22,33 @@ public class StatementVisitor extends brigBaseVisitor<TypeWrapper>{
 		this.scope = scope;
 	}
 	
-    // assignment/id overrides
     @Override
-    public TypeWrapper visitAssign(brigParser.AssignContext ctx) {
-        return ctx.accept(new AssignVisitor(scope));
+    public TypeWrapper visitAssign(@NotNull brigParser.AssignContext ctx) {
+        return ctx.accept(new AssignVisitor(this.scope));
     }
     
     @Override
-    public TypeWrapper visitPrint(brigParser.PrintContext ctx){
-        return ctx.accept(new PrintVisitor(scope));
+    public TypeWrapper visitPrint(@NotNull brigParser.PrintContext ctx){
+        return ctx.accept(new PrintVisitor(this.scope));
     }
     
     @Override
-    public TypeWrapper visitIf_statement(brigParser.If_statementContext ctx) {
-        return ctx.accept(new IfVisitor(scope));
+    public TypeWrapper visitIf_statement(@NotNull brigParser.If_statementContext ctx) {
+        return ctx.accept(new IfVisitor(this.scope));
     }
 
 	@Override 
-	public TypeWrapper visitWhile_statement(brigParser.While_statementContext ctx) { 
-		return ctx.accept(new WhileVisitor(scope)); 
+	public TypeWrapper visitWhile_statement(@NotNull brigParser.While_statementContext ctx) { 
+		return ctx.accept(new WhileVisitor(this.scope)); 
 	}
 
 	@Override 
-	public TypeWrapper visitFor_statement(brigParser.For_statementContext ctx) {
-		return ctx.accept(new ForVisitor(scope)); 
+	public TypeWrapper visitFor_statement(@NotNull brigParser.For_statementContext ctx) {
+		return ctx.accept(new ForVisitor(this.scope)); 
+	}
+	
+	@Override
+	public TypeWrapper visitSwitch_statement(@NotNull brigParser.Switch_statementContext ctx){
+		return ctx.accept(new SwitchStatement(this.scope));
 	}
 }

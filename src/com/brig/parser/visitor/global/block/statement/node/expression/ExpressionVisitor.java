@@ -11,12 +11,13 @@ import generated.brigBaseVisitor;
 public class ExpressionVisitor extends brigBaseVisitor<TypeWrapper> {
 	
 	private ExpressionVisitor expressionVisitor;
-	
 	private AtomVisitor atomVisitor;
+	private Scope scope;
 	
 	public ExpressionVisitor(Scope scope){
-		atomVisitor = new AtomVisitor(scope);
-		 this.expressionVisitor = this;
+		this.scope = scope;
+		this.expressionVisitor = this;
+		this.atomVisitor = new AtomVisitor(this.scope);
 	}
 	
     @Override

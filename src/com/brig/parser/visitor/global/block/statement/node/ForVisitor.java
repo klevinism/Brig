@@ -40,7 +40,7 @@ public class ForVisitor extends brigBaseVisitor<TypeWrapper> {
 			condition = ctx.expression().accept(this.expressionVisitor);	// step into condition again
 		}
 		
-		return body.VOID; 
+		return body; 
 	}
 
 	

@@ -1,16 +1,9 @@
- 
-let a be 178
+let a be 179
 
 switch (a) do {
-	case 10 : print a
-	case 7 : print a
-	case "hi" : print a	
-	case 1 : print a 
-	case 178 : print "!"	
-	default : println "omfgggg"
+	case 7 : println a
+	case "hi" : println a	
+	case 1 : println a 
+	case 178 : println "!"	
+	default : println ":-)"
 }
-
-function lul(){
-	println 10
-}
-
