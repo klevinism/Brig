@@ -2,7 +2,7 @@ package com.brig.parser.visitor.global.block;
 
 import com.brig.parser.domain.Scope;
 import com.brig.parser.domain.wrapper.TypeWrapper;
-import com.brig.parser.visitor.global.StatementVisitor;
+import com.brig.parser.visitor.global.block.statement.StatementVisitor;
 
 import generated.brigBaseVisitor;
 import generated.brigParser;

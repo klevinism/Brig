@@ -46,7 +46,7 @@ while_statement
 	;
 	
 for_statement
-	: 'for' OPAR? assign SCOL expression SCOL stat_block CPAR? 'do' stat_block 
+	: 'for' OPAR? assign SCOL expression SCOL assign CPAR? 'do' stat_block 
 	;
 	
 switch_statement

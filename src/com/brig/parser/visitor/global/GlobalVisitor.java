@@ -15,11 +15,12 @@ import generated.brigBaseVisitor;
 import generated.brigLexer;
 import generated.brigParser;
 import com.brig.parser.domain.wrapper.TypeWrapper;
-import com.brig.parser.visitor.global.block.statement.MethodVisitor;
+import com.brig.parser.visitor.global.block.statement.StatementVisitor;
+import com.brig.parser.visitor.global.block.statement.node.MethodVisitor;
 
 public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{ 
 	
-	Scope scope;
+	public Scope scope;
 	
     // used to compare floating point numbers
     public static final double SMALL_VALUE = 0.00000000001;
@@ -30,7 +31,6 @@ public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{
     // store variables (there's only one global scope!)
     public static Map<String, TypeWrapper> globalScopeVar = new HashMap<String, TypeWrapper>();    
   
-    
     public GlobalVisitor(Scope scope){
     	this.scope = scope;
     }

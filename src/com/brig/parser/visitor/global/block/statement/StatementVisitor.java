@@ -1,11 +1,12 @@
-package com.brig.parser.visitor.global;
+package com.brig.parser.visitor.global.block.statement;
 
 import com.brig.parser.domain.Scope;
 import com.brig.parser.domain.wrapper.TypeWrapper;
-import com.brig.parser.visitor.global.block.statement.AssignVisitor;
-import com.brig.parser.visitor.global.block.statement.IfVisitor;
-import com.brig.parser.visitor.global.block.statement.PrintVisitor;
-import com.brig.parser.visitor.global.block.statement.WhileVisitor;
+import com.brig.parser.visitor.global.block.statement.node.AssignVisitor;
+import com.brig.parser.visitor.global.block.statement.node.ForVisitor;
+import com.brig.parser.visitor.global.block.statement.node.IfVisitor;
+import com.brig.parser.visitor.global.block.statement.node.PrintVisitor;
+import com.brig.parser.visitor.global.block.statement.node.WhileVisitor;
 
 import generated.brigBaseVisitor;
 import generated.brigParser;
@@ -39,4 +40,8 @@ public class StatementVisitor extends brigBaseVisitor<TypeWrapper>{
 		return ctx.accept(new WhileVisitor(scope)); 
 	}
 
+	@Override 
+	public TypeWrapper visitFor_statement(brigParser.For_statementContext ctx) {
+		return ctx.accept(new ForVisitor(scope)); 
+	}
 }

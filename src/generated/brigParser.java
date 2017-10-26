@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class brigParser extends Parser {
+	static { RuntimeMetaData.checkVersion("4.4", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -748,15 +749,15 @@ public class brigParser extends Parser {
 
 	public static class For_statementContext extends ParserRuleContext {
 		public List<TerminalNode> SCOL() { return getTokens(brigParser.SCOL); }
-		public Stat_blockContext stat_block(int i) {
-			return getRuleContext(Stat_blockContext.class,i);
-		}
 		public TerminalNode CPAR() { return getToken(brigParser.CPAR, 0); }
-		public AssignContext assign() {
-			return getRuleContext(AssignContext.class,0);
+		public List<AssignContext> assign() {
+			return getRuleContexts(AssignContext.class);
 		}
-		public List<Stat_blockContext> stat_block() {
-			return getRuleContexts(Stat_blockContext.class);
+		public Stat_blockContext stat_block() {
+			return getRuleContext(Stat_blockContext.class,0);
+		}
+		public AssignContext assign(int i) {
+			return getRuleContext(AssignContext.class,i);
 		}
 		public ExpressionContext expression() {
 			return getRuleContext(ExpressionContext.class,0);
@@ -804,7 +805,7 @@ public class brigParser extends Parser {
 			setState(133); match(SCOL);
 			setState(134); expression(0);
 			setState(135); match(SCOL);
-			setState(136); stat_block();
+			setState(136); assign();
 			setState(138);
 			_la = _input.LA(1);
 			if (_la==CPAR) {
@@ -2016,7 +2017,7 @@ public class brigParser extends Parser {
 		"\u0081\5$\23\2\u0081\23\3\2\2\2\u0082\u0084\7\b\2\2\u0083\u0085\7$\2\2"+
 		"\u0084\u0083\3\2\2\2\u0084\u0085\3\2\2\2\u0085\u0086\3\2\2\2\u0086\u0087"+
 		"\5\n\6\2\u0087\u0088\7\31\2\2\u0088\u0089\5&\24\2\u0089\u008a\7\31\2\2"+
-		"\u008a\u008c\5$\23\2\u008b\u008d\7%\2\2\u008c\u008b\3\2\2\2\u008c\u008d"+
+		"\u008a\u008c\5\n\6\2\u008b\u008d\7%\2\2\u008c\u008b\3\2\2\2\u008c\u008d"+
 		"\3\2\2\2\u008d\u008e\3\2\2\2\u008e\u008f\7\f\2\2\u008f\u0090\5$\23\2\u0090"+
 		"\25\3\2\2\2\u0091\u0095\7\r\2\2\u0092\u0094\5&\24\2\u0093\u0092\3\2\2"+
 		"\2\u0094\u0097\3\2\2\2\u0095\u0093\3\2\2\2\u0095\u0096\3\2\2\2\u0096\u0098"+
@@ -2061,7 +2062,6 @@ public class brigParser extends Parser {
 		"\u0106\3\2\2\2\u0108\u0107\3\2\2\2\u0109)\3\2\2\2$-\63=JORWZ\\`kpty}\u0084"+
 		"\u008c\u0095\u009d\u00a5\u00ad\u00b3\u00b6\u00b8\u00bc\u00c2\u00c9\u00cc"+
 		"\u00d6\u00de\u00ea\u00fe\u0100\u0108";
-
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

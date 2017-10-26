@@ -1,4 +1,4 @@
-package com.brig.parser.visitor.global.block.statement.node;
+package com.brig.parser.visitor.global.block.statement.node.expression.atom;
 
 import com.brig.parser.domain.Scope;
 import com.brig.parser.domain.expression.node.LocalVariable;
@@ -19,6 +19,7 @@ public class AtomVisitor extends brigBaseVisitor<TypeWrapper> {
 	public TypeWrapper visitIdAtom( brigParser.IdAtomContext ctx) { 
 		String id = ctx.ID().getText();
 		LocalVariable tw = scope.getVariable(id);
+		
         if(tw == null) {
                throw new RuntimeException("no such variable: " + id);
         }

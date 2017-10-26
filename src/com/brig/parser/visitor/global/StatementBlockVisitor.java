@@ -3,7 +3,7 @@ package com.brig.parser.visitor.global;
 import com.brig.parser.domain.Scope;
 import com.brig.parser.domain.wrapper.TypeWrapper;
 import com.brig.parser.visitor.global.block.BlockVisitor;
-import com.brig.parser.visitor.global.block.statement.node.ExpressionVisitor;
+import com.brig.parser.visitor.global.block.statement.node.expression.ExpressionVisitor;
 
 import generated.brigParser;
 import generated.brigBaseVisitor;

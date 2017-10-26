@@ -1,8 +1,9 @@
-package com.brig.parser.visitor.global.block.statement.node;
+package com.brig.parser.visitor.global.block.statement.node.expression;
 
 import com.brig.parser.domain.Scope;
 import com.brig.parser.domain.wrapper.TypeWrapper;
 import com.brig.parser.util.ConstantValue;
+import com.brig.parser.visitor.global.block.statement.node.expression.atom.AtomVisitor;
 
 import generated.brigParser;
 import generated.brigBaseVisitor;

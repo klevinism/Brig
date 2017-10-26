@@ -1,9 +1,9 @@
-package com.brig.parser.visitor.global.block.statement;
+package com.brig.parser.visitor.global.block.statement.node;
 
 import com.brig.parser.domain.Scope;
 import com.brig.parser.domain.wrapper.TypeWrapper;
 import com.brig.parser.visitor.global.StatementBlockVisitor;
-import com.brig.parser.visitor.global.block.statement.node.ExpressionVisitor;
+import com.brig.parser.visitor.global.block.statement.node.expression.ExpressionVisitor;
 
 import generated.brigParser;
 import generated.brigBaseVisitor;

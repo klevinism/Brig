@@ -1,4 +1,4 @@
-package com.brig.parser.visitor.global.block.statement;
+package com.brig.parser.visitor.global.block.statement.node;
 
 import java.util.ArrayList;
 import java.util.HashMap;
