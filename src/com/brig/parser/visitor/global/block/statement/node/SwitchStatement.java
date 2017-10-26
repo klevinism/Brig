@@ -8,6 +8,8 @@ import com.brig.parser.visitor.global.block.statement.node.expression.Expression
 import generated.brigParser;
 import generated.brigParser.Switch_expressionContext;
 
+import org.antlr.v4.runtime.misc.NotNull;
+
 import com.brig.parser.domain.Scope;
 import generated.brigBaseVisitor;
 
@@ -25,7 +27,8 @@ public class SwitchStatement extends brigBaseVisitor<TypeWrapper> {
 		this.statementBlockVisitor = new StatementBlockVisitor(this.scope);
 	}
 	
-	@Override public TypeWrapper visitSwitch_statement(brigParser.Switch_statementContext ctx) { 
+	@Override 
+	public TypeWrapper visitSwitch_statement(@NotNull brigParser.Switch_statementContext ctx) { 
 		TypeWrapper expression = ctx.expression(0).accept(expressionVisitor);
 		TypeWrapper switchStatement = null;
 		TypeWrapper case_exp = null;
