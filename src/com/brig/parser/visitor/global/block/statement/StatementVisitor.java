@@ -10,6 +10,8 @@ import com.brig.parser.visitor.global.block.statement.node.IfVisitor;
 import com.brig.parser.visitor.global.block.statement.node.PrintVisitor;
 import com.brig.parser.visitor.global.block.statement.node.SwitchStatement;
 import com.brig.parser.visitor.global.block.statement.node.WhileVisitor;
+import com.brig.parser.visitor.global.block.statement.node.function.FunctionDeclarationVisitor;
+import com.brig.parser.visitor.global.block.statement.node.function.FunctionVisitor;
 
 import generated.brigBaseVisitor;
 import generated.brigParser;
@@ -50,5 +52,15 @@ public class StatementVisitor extends brigBaseVisitor<TypeWrapper>{
 	@Override
 	public TypeWrapper visitSwitch_statement(@NotNull brigParser.Switch_statementContext ctx){
 		return ctx.accept(new SwitchStatement(this.scope));
+	}
+	
+	@Override 
+	public TypeWrapper visitFunction(@NotNull brigParser.FunctionContext ctx) {
+		return ctx.accept(new FunctionVisitor(this.scope));
+	}
+	
+	@Override 
+	public TypeWrapper visitFunction_declaration(brigParser.Function_declarationContext ctx) {
+		return ctx.accept(new FunctionDeclarationVisitor(this.scope));
 	}
 }

@@ -13,7 +13,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 import com.brig.parser.domain.Scope;
 import generated.brigBaseVisitor;
 
-public class SwitchStatement extends brigBaseVisitor<TypeWrapper> {
+public class SwitchStatement extends brigBaseVisitor<TypeWrapper>{
 	
 	private StatementBlockVisitor statementBlockVisitor;
 	private ExpressionVisitor expressionVisitor;

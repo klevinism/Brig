@@ -2,8 +2,9 @@
 
 let la be ":-)"
 
-let z be ((24*2) + 2)
+function hi(let a, let b, let c){
+	println a + c
+	print b
+}
 
-println z
-
-//print la
+hi(20, 788, 66655)

@@ -21,8 +21,10 @@ public class AssignVisitor extends brigBaseVisitor<TypeWrapper> {
     @Override
     public TypeWrapper visitAssign(brigParser.AssignContext ctx) {
         String id = ctx.ID().getText();
+        TypeWrapper tw = new TypeWrapper("");
         
-        TypeWrapper tw = ctx.expression().accept(expression);
+        if(ctx.expression() != null)
+        	tw = ctx.expression().accept(expression);
 
         LocalVariable variable = new LocalVariable(id, tw, this.scope);
 

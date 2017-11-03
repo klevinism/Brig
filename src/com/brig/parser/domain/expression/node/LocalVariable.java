@@ -15,6 +15,11 @@ public class LocalVariable implements Variable {
 		this.scope = variable.scope;
 	}
 	
+	public LocalVariable(String name, TypeWrapper value){
+		this.name = name;
+		this.value = value;
+	}
+	
 	public LocalVariable(String name, TypeWrapper value, Scope scope){
 		this.name = name;
 		this.value = value;
