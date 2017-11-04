@@ -15,7 +15,8 @@ public class Scope {
 	private List<FunctionDeclaration> functionDeclaration;
 	private List<FunctionSignature> functionSignature;
     private Map<String, LocalVariable> localVariables;
-	private String className;
+	private FunctionSignature lastFunctionSignature;
+    private String className;
 	
 	public Scope(String className){
 		this.className = className;
@@ -73,10 +74,16 @@ public class Scope {
 	}
 
 	public FunctionSignature getFunctionSignature(String name){
-		return this.functionSignature.stream()
+		lastFunctionSignature = this.functionSignature.stream()
 				.filter(x -> x.getName().equals(name))
 				.findFirst()
 				.get();
+		
+		return lastFunctionSignature;
+	}
+	
+	public FunctionSignature getCurrentFunctionSignature(){
+		return lastFunctionSignature;
 	}
 	
 	private boolean hasSameNrArgs(FunctionSignature functionSignature){		

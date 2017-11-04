@@ -24,8 +24,8 @@ statement
 	;
 
 assign
-	: ('let' ID 'be'? expression?)
-	| ('let' ID ':'? expression?)
+	: ('let' ID 'be'? (statement? |expression?))
+	| ('let' ID ':'? (statement? |expression?))
 	;
 
 print     

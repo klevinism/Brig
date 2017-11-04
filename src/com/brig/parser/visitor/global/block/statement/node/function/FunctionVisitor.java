@@ -39,9 +39,11 @@ public class FunctionVisitor extends brigBaseVisitor<TypeWrapper>{
 		
 		this.scope.addFunctionSignature(functionSignature);
 
-		if(this.scope.isFunctionDeclaration(functionSignature))					// if we encountered any declared/called function previously
-			return this.scope.getFunctionSignature(name).getBlock().accept(this.statementBlockVisitor);		// Then visit the function body
-
-		return null;
+		if(this.scope.isFunctionDeclaration(functionSignature)){					// if we encountered any declared/called function previously
+			this.scope.getFunctionSignature(name).getBlock().accept(this.statementBlockVisitor);		// Then visit the function body
+			return this.scope.getFunctionSignature(name).getValue();
+		}
+		
+		return new TypeWrapper(null);		// if function is void
 	}
 }

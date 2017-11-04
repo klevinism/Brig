@@ -63,4 +63,9 @@ public class StatementVisitor extends brigBaseVisitor<TypeWrapper>{
 	public TypeWrapper visitFunction_declaration(brigParser.Function_declarationContext ctx) {
 		return ctx.accept(new FunctionDeclarationVisitor(this.scope));
 	}
+	
+	@Override 
+	public TypeWrapper visitReturn_statement(brigParser.Return_statementContext ctx) {
+		return ctx.accept(new ReturnVisitor(this.scope));
+	}
 }

@@ -35,10 +35,12 @@ public class FunctionDeclarationVisitor extends brigBaseVisitor<TypeWrapper>{
 
 		this.scope.addFunctionDeclaration(functionDeclaration);
 		
-		if(this.scope.isFunctionSignature(functionDeclaration))						// if we encountered any function previously
-			return this.scope.getFunctionSignature(name).getBlock().accept(this.statementBlockVisitor);		//	visit function body
+		if(this.scope.isFunctionSignature(functionDeclaration)){						// if we encountered any function previously
+			this.scope.getFunctionSignature(name).getBlock().accept(this.statementBlockVisitor);		//	visit function body
+			return this.scope.getFunctionSignature(name).getValue();
+		}
 		
-		return null;
+		return new TypeWrapper(null);		// if function is void
 	}
 
 }

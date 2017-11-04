@@ -3,8 +3,9 @@
 let la be ":-)"
 
 function hi(let a, let b, let c){
-	println a + c
-	print b
+	return b
 }
 
-hi(20, 788, 66655)
+let e be hi(20, 788, 66655)
+
+print e

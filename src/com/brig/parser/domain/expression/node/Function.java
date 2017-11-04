@@ -56,6 +56,10 @@ public class Function {
 		this.arguments = arguments;
 	}
 
+	public Function getFunction(){
+		return this;
+	}
+	
 	@Override
 	public String toString() {
 		return "Function [name=" + name + ", parameters=" + parameters + ", block=" + block + "]";
