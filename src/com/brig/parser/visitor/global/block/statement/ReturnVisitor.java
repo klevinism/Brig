@@ -11,10 +11,12 @@ public class ReturnVisitor extends brigBaseVisitor<TypeWrapper>{
 
 	private ExpressionVisitor expressionVisitor;
 	private StatementVisitor statementVisitor;
+	private Scope globalScope;
 	private Scope scope;
 	
 	public ReturnVisitor(Scope scope){
-		this.scope = scope;
+		this.globalScope = scope;
+		this.scope = scope.getCurrentFunctionSignature().getScope();		// Scope of function
 		this.statementVisitor = new StatementVisitor(this.scope);
 		this.expressionVisitor = new ExpressionVisitor(this.scope);
 	}
@@ -30,8 +32,8 @@ public class ReturnVisitor extends brigBaseVisitor<TypeWrapper>{
 			returnObject = ctx.expression().accept(expressionVisitor);
 		else
 			System.err.println("Unknown statement" + ctx.getText());
-		
-		this.scope.getCurrentFunctionSignature().addValue(returnObject);
+	
+		this.globalScope.getCurrentFunctionSignature().addValue(returnObject);
 		
 		return returnObject;
 	}

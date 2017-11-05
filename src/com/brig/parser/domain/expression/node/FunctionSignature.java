@@ -12,15 +12,25 @@ import generated.brigParser.Stat_blockContext;
 public class FunctionSignature extends Function{
 
 	private Map<Function, TypeWrapper> functionSignatures = new HashMap<Function, TypeWrapper>(); 
-
+	private Scope scope;
+	
 	public FunctionSignature(String name, Stat_blockContext block, List<String> parameters) {	// default constructor for 
 		super(name, block, parameters);
 	}
 	
-	public FunctionSignature(Function function){
+	public FunctionSignature(Function function, Scope scope){
 		super(function.getName(), function.getBlock(), function.getParameters());
+		this.setScope(scope);
 	}
 
+	public void setScope(Scope scope){
+		this.scope = scope;
+	}
+	
+	public Scope getScope(){
+		return this.scope;
+	}
+	
 	public void addValue(TypeWrapper value){
 		this.functionSignatures.put(super.getFunction(), value);
 	}

@@ -18,7 +18,8 @@ import generated.brigParser;
 
 public class StatementVisitor extends brigBaseVisitor<TypeWrapper>{
 
-	private Scope scope;
+	private final Scope functionScope = new Scope("function");
+	private final Scope scope;
 	
 	public StatementVisitor(Scope scope){
 		this.scope = scope;

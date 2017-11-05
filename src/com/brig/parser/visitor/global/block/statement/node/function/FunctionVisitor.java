@@ -18,12 +18,15 @@ public class FunctionVisitor extends brigBaseVisitor<TypeWrapper>{
 	
 	private StatementBlockVisitor statementBlockVisitor;
 	private ParameterVisitor parametersVisitor;
+	private Scope functionScope;
 	private Scope scope;
-	
+
 	public FunctionVisitor(Scope scope){
 		this.scope = scope;
-		this.parametersVisitor = new ParameterVisitor(this.scope);
-		this.statementBlockVisitor = new StatementBlockVisitor(this.scope);		
+		this.functionScope = new Scope("function");
+		this.functionScope.setLocalVariables(this.scope.getLocalVariables());
+		this.parametersVisitor = new ParameterVisitor(this.functionScope);		// new scope for parameters of functions
+		this.statementBlockVisitor = new StatementBlockVisitor(this.functionScope);		
 	}
 
 	@Override 
@@ -35,7 +38,7 @@ public class FunctionVisitor extends brigBaseVisitor<TypeWrapper>{
 		if(ctx.arguments() != null)
 			parameters = ctx.arguments().accept(this.parametersVisitor);
 		
-		FunctionSignature functionSignature = new FunctionSignature(new Function(name, body, parameters));
+		FunctionSignature functionSignature = new FunctionSignature(new Function(name, body, parameters), new Scope("function"));
 		
 		this.scope.addFunctionSignature(functionSignature);
 
@@ -44,6 +47,6 @@ public class FunctionVisitor extends brigBaseVisitor<TypeWrapper>{
 			return this.scope.getFunctionSignature(name).getValue();
 		}
 		
-		return new TypeWrapper(null);		// if function is void
+		return new TypeWrapper(null);		// if function void???
 	}
 }

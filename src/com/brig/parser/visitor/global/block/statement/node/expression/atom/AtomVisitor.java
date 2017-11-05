@@ -19,7 +19,7 @@ public class AtomVisitor extends brigBaseVisitor<TypeWrapper> {
 	public TypeWrapper visitIdAtom( brigParser.IdAtomContext ctx) { 
 		String id = ctx.ID().getText();
 		LocalVariable tw = scope.getVariable(id);
-		
+
         if(tw == null) {
                throw new RuntimeException("no such variable: " + id);
         }

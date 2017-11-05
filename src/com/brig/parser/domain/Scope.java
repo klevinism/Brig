@@ -15,7 +15,7 @@ public class Scope {
 	private List<FunctionDeclaration> functionDeclaration;
 	private List<FunctionSignature> functionSignature;
     private Map<String, LocalVariable> localVariables;
-	private FunctionSignature lastFunctionSignature;
+	private FunctionSignature currentFunctionSignature;
     private String className;
 	
 	public Scope(String className){
@@ -31,6 +31,14 @@ public class Scope {
 
 	public void setClassName(String className) {
 		this.className = className;
+	}
+	
+	public void setLocalVariables(Map<String, LocalVariable> localVariables){
+		this.localVariables = localVariables;
+	}
+	
+	public Map<String, LocalVariable> getLocalVariables(){
+		return this.localVariables;
 	}
 	
 	public void addVariable(String name, LocalVariable var){
@@ -50,40 +58,45 @@ public class Scope {
 	}
 	
 	public boolean isFunctionSignature(FunctionDeclaration functionDeclaration){
-		if(this.hasSameFunctionName(functionDeclaration))
+
+		if(this.hasSameFunctionName(functionDeclaration)){
+			
 			if(this.hasSameNrParams(functionDeclaration)){
+				
 				this.bindArgumentsWithValues(functionDeclaration);
 				return true;
 			}
 			else
 				return false;
+		}
 		else 
 			return false;
 	}
 	
 	public boolean isFunctionDeclaration(FunctionSignature functionSignature){
-		if(this.hasSameFunctionName(functionSignature))
+		if(this.hasSameFunctionName(functionSignature)){
 			if(this.hasSameNrArgs(functionSignature)){
 				this.bindArgumentsWithValues(functionSignature);
 				return true;
 			}
 			else
 				return false;
+		}
 		else
 			return false;
 	}
 
 	public FunctionSignature getFunctionSignature(String name){
-		lastFunctionSignature = this.functionSignature.stream()
+		currentFunctionSignature = this.functionSignature.stream()
 				.filter(x -> x.getName().equals(name))
 				.findFirst()
 				.get();
 		
-		return lastFunctionSignature;
+		return currentFunctionSignature;
 	}
 	
 	public FunctionSignature getCurrentFunctionSignature(){
-		return lastFunctionSignature;
+		return currentFunctionSignature;
 	}
 	
 	private boolean hasSameNrArgs(FunctionSignature functionSignature){		
@@ -115,7 +128,6 @@ public class Scope {
 	}
 	
 	private boolean bindArgumentsWithValues(FunctionSignature functionSignature){
-		
 		List<String> params = functionSignature.getParameters();
 		
 		List<TypeWrapper> args = this.functionDeclaration.stream()
@@ -123,9 +135,8 @@ public class Scope {
 				.findFirst()
 				.get();
 		
-		for(int cnt=0; cnt<params.size(); cnt++){
-			this.localVariables.put(params.get(cnt), new LocalVariable(params.get(cnt), args.get(cnt)));	// Bind arguments and parameters args=params in memory
-		}
+		for(int cnt=0; cnt<params.size(); cnt++)
+			functionSignature.getScope().localVariables.put(params.get(cnt), new LocalVariable(params.get(cnt), args.get(cnt)));	// Bind arguments and parameters args=params in memory
 		
 		return false;
 	}
@@ -139,8 +150,9 @@ public class Scope {
 		
 		List<TypeWrapper> args = functionDeclaration.getArguments();
 		
+		
 		for(int cnt=0; cnt<params.size(); cnt++){
-			this.localVariables.put(params.get(cnt), new LocalVariable(params.get(cnt), args.get(cnt)));	// Bind arguments and parameters args=params in memory
+			this.getFunctionSignature(functionDeclaration.getName()).getScope().localVariables.put(params.get(cnt), new LocalVariable(params.get(cnt), args.get(cnt)));	// Bind arguments and parameters args=params in memory
 		}	
 	}
 }
