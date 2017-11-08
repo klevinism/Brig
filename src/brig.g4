@@ -3,7 +3,7 @@ grammar brig;
 program   : importBlocks* statement+ EOF;
 
 importBlocks
-	: 'import' atom
+	: 'import' expression*
 	;
 	
 block

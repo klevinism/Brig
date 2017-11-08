@@ -59,31 +59,33 @@ public class Scope {
 	
 	public boolean isFunctionSignature(FunctionDeclaration functionDeclaration){
 
-		if(this.hasSameFunctionName(functionDeclaration)){
-			
-			if(this.hasSameNrParams(functionDeclaration)){
-				
-				this.bindArgumentsWithValues(functionDeclaration);
-				return true;
+		if(this.hasSameFunctionName(functionDeclaration))
+			if(!this.hasNoArgs(functionDeclaration)){
+				if(this.hasSameNrArgs(functionDeclaration)){
+					this.bindArgumentsWithValues(functionDeclaration);
+					return true;
+				}
+				else
+					return false;
 			}
 			else
-				return false;
-		}
+				return true;
 		else 
 			return false;
 	}
 	
 	public boolean isFunctionDeclaration(FunctionSignature functionSignature){
-		if(this.hasSameFunctionName(functionSignature)){
-			if(this.hasSameNrArgs(functionSignature)){
+		
+		if(this.hasSameFunctionName(functionSignature))
+			if(this.hasNoArgs(functionSignature))
+				return true;
+			else if(this.hasSameNrArgs(functionSignature)){
 				this.bindArgumentsWithValues(functionSignature);
 				return true;
-			}
-			else
+			}else
 				return false;
-		}
-		else
-			return false;
+		
+		return false;
 	}
 
 	public FunctionSignature getFunctionSignature(String name){
@@ -99,21 +101,35 @@ public class Scope {
 		return currentFunctionSignature;
 	}
 	
-	private boolean hasSameNrArgs(FunctionSignature functionSignature){		
+	private boolean hasNoArgs(FunctionSignature functionSignature){		
+		System.out.println(
+		this.functionDeclaration.stream()
+				.filter(x -> x.getName().equals(functionSignature.getName()))
+				.allMatch(x -> x.getArguments() == null && functionSignature.getParameters() == null 
+				)
+		);
+		return false;
+	}
+	
+	private boolean hasNoArgs(FunctionDeclaration functionDeclaration){
 		return this.functionSignature.stream()
-				.allMatch(x -> (
-						(x.getParameters() == null && functionSignature.getParameters() == null)	// check if function declaration and function signature have no arguments
-						||(x.getParameters().size() == functionSignature.getArguments().size())		// check that if they do, they must have the same number
-						)
+				.filter(x -> x.getName().equals(functionDeclaration.getName()))
+				.allMatch(x -> x.getParameters() == null && functionDeclaration.getArguments() == null  // check if function signature and function declaration
 				);
 	}
 	
-	private boolean hasSameNrParams(FunctionDeclaration functionDeclaration){
+	
+	private boolean hasSameNrArgs(FunctionSignature functionSignature){		
+		return this.functionDeclaration.stream()
+				.filter(x -> x.getName().equals(functionSignature.getName()))
+				.allMatch(x -> x.getArguments().size() == functionSignature.getParameters().size()	// check that if they do, they must have the same number
+				);
+	}
+	
+	private boolean hasSameNrArgs(FunctionDeclaration functionDeclaration){
 		return this.functionSignature.stream()
-				.allMatch(x -> (
-						(x.getArguments() == null && functionDeclaration.getParameters() == null)	// check if function signature and function declaration have no arguments
-						||(x.getArguments().size() == functionDeclaration.getParameters().size())	// check that if they do, they must have the same number
-						)
+				.filter(x -> x.getName().equals(functionDeclaration.getName()))
+				.anyMatch(x -> (x.getParameters().size() == functionDeclaration.getArguments().size())	// check that if they do, they must have the same number
 				);
 	}
 	
@@ -128,9 +144,11 @@ public class Scope {
 	}
 	
 	private boolean bindArgumentsWithValues(FunctionSignature functionSignature){
+		
 		List<String> params = functionSignature.getParameters();
 		
 		List<TypeWrapper> args = this.functionDeclaration.stream()
+				.filter(x -> x.getName().equals(functionSignature.getName()))
 				.map(x -> x.getArguments())
 				.findFirst()
 				.get();
@@ -144,6 +162,7 @@ public class Scope {
 	private void bindArgumentsWithValues(FunctionDeclaration functionDeclaration){
 		
 		List<String> params = this.functionSignature.stream()
+				.filter(x -> x.getName().equals(functionDeclaration.getName()))
 				.map(x -> x.getParameters())
 				.findFirst()
 				.get();

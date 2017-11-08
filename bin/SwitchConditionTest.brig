@@ -1,9 +1,11 @@
 let a be 179
 
-switch (a) do {
-	case 7 : println a
-	case "hi" : println a	
-	case 1 : println a 
-	case 178 : println "!"	
-	default : println ":-)"
+function switchFunction(){
+	switch (a) do {
+		case 7 : return a
+		case "hi" : return a	
+		case 1 : return a 
+		case 178 : return "!"	
+		default : return ":-)"
+	}	
 }

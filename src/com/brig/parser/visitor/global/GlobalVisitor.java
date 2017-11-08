@@ -37,10 +37,11 @@ public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{
     
 	@Override 
 	public TypeWrapper visitImportBlocks(brigParser.ImportBlocksContext ctx) { 
-		String importTxt = ctx.atom().getText();
+		String importTxt = ctx.expression(0).getText();
 		String importPath = importTxt.substring(importTxt.indexOf('"')+1, importTxt.lastIndexOf('"'));	
 		
         ANTLRInputStream input = null;
+        
 		try {
 			input = new ANTLRInputStream(new FileInputStream(importPath));
 		} catch (FileNotFoundException e) {
@@ -54,7 +55,7 @@ public class GlobalVisitor extends brigBaseVisitor<TypeWrapper>{
 
         ParseTree tree = parser.program();
 		
-		return this.visit(tree); 
+		return tree.accept(new GlobalVisitor(this.scope)); 
 	}
 
 	@Override 

@@ -24,7 +24,7 @@ public class PrintVisitor  extends brigBaseVisitor<TypeWrapper> {
 
     	switch(printCommand){
     		case "print" : System.out.print(printValue); break;
-    		case "println" : System.out.println(printValue); break;
+    		case "println" : System.out.println("\n"+printValue); break;
     		default : throw new RuntimeException("Undefined parameter" + printCommand);
     	}
     	
