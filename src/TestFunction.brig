@@ -1,15 +1,18 @@
-import ("C:\Users\Silver\git\Brig\src\SwitchConditionTest.brig")
+import ("C:\Users\Silver\git\Brig\brig\core\util\Math.brig")
 
 let la be ":-)"
 
 function hi(let a, let b, let c){
-	return b
+	let count be 0
+	
+	let count be count+1
+	
+	return count
 }
+let cnt be hi(2,12,10)
 
-let e be hi(20, 788, 66655)
+println cnt
 
-print e
+let sqrtOf2 be sqrt(12)
 
-let smileFace be switchFunction()
-
-println smileFace
+print sqrtOf2
