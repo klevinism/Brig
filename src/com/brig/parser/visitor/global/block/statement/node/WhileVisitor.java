@@ -24,6 +24,8 @@ SOFTWARE.
 
 package com.brig.parser.visitor.global.block.statement.node;
 
+import org.antlr.v4.runtime.misc.NotNull;
+
 import com.brig.parser.domain.Scope;
 import com.brig.parser.domain.wrapper.TypeWrapper;
 import com.brig.parser.visitor.global.StatementBlockVisitor;
@@ -44,8 +46,14 @@ public class WhileVisitor  extends brigBaseVisitor<TypeWrapper> {
 		this.statementBlockVisitor = new StatementBlockVisitor(scope);
 	}
 	
+	/**
+	 * Once walker encounters a while loop this method will be called. 
+	 * 
+	 * @param ctx : context of the while loop statement
+	 * @return void : On TypeWrapper
+	 */
 	@Override
-	public TypeWrapper visitWhile_statement(brigParser.While_statementContext ctx) { 
+	public TypeWrapper visitWhile_statement(@NotNull brigParser.While_statementContext ctx) { 
 		TypeWrapper expression = ctx.expression(0).accept(this.expressionVisitor);
 		while(expression.asBoolean()){
 			ctx.stat_block().accept(this.statementBlockVisitor);

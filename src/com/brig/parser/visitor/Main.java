@@ -40,7 +40,10 @@ import generated.brigParser;
 public class Main{
 	public static void main(String[] args) {
 	    try {
-	        ANTLRInputStream input = new ANTLRInputStream(new FileInputStream(args[0]));
+	    	
+	    	long startTime = System.nanoTime();
+
+	    	ANTLRInputStream input = new ANTLRInputStream(new FileInputStream(args[0]));
 	    	Scope globalScope = new Scope("Global");
 
 	        brigLexer lexer = new brigLexer(input);
@@ -50,6 +53,24 @@ public class Main{
 	        GlobalVisitor visitor = new GlobalVisitor(globalScope);
 	        
 	        tree.accept(visitor);
+	        
+	    	long endTime = System.nanoTime();
+
+	    	long duration = (endTime - startTime);
+
+	    	System.out.println(duration/1000000 + " - Milliseconds - Brig");
+	    	
+	    	long startTime2 = System.nanoTime();
+	    	
+	    	for(int x=0; x<100000; x++)
+	    		System.out.print("");
+	    	
+	    	long endTime2 = System.nanoTime();
+
+	    	long duration2 = (endTime2 - startTime2);
+	    	
+	    	System.out.println(duration2/1000000 + " - Milliseconds - Java");
+	    	
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    }

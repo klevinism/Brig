@@ -37,49 +37,108 @@ public class Function {
 	private List<TypeWrapper> arguments;
 	private List<String> parameters;
 	
+	/**
+	 * Function constructor. Used only for functions with a body, 
+	 * not function declaration
+	 * 
+	 * @param String name : Name of function 
+	 * @param Stat_blockContext block : Function body
+	 * @param List<String> parameters : Parameters of function
+	 */
 	public Function(String name, Stat_blockContext block, List<String> parameters){
 		this.name = name;
 		this.block = block;
 		this.parameters = parameters;
 	}
 
+	/**
+	 * Function constructor. Used only for functions declarations, no function body.
+	 * 
+	 * @param String name : Name of function 
+	 * @param List<TypeWrapper> arguments : Arguments of function declaration
+	 */
 	public Function(String name,  List<TypeWrapper> arguments){
 		this.name = name;
 		this.arguments = arguments;
 	}
 
+	/**
+	 * Getter function
+	 * 
+	 * @return String name: Name of function
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * Setter function
+	 * 
+	 * @param String name: Name of function
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	/**
+	 * Getter function
+	 * 
+	 * @return List<String> parameters: Parameters of function
+	 */
 	public List<String> getParameters() {
 		return parameters;
 	}
 
+	/**
+	 * Setter function
+	 * 
+	 * @param List<String> parameters: Parameters of the function
+	 */
 	public void setParameters(List<String> parameters) {
 		this.parameters = parameters;
 	}
 
+	/**
+	 * Getter function
+	 * 
+	 * @return Stat_blockContext block: Body of the function
+	 */
 	public Stat_blockContext getBlock() {
 		return block;
 	}
 
+	/**
+	 * Setter function
+	 * 
+	 * @param Stat_blockContext block: Body of the function
+	 */
 	public void setBlock(Stat_blockContext block) {
 		this.block = block;
 	}
 	
+	/**
+	 * Getter function
+	 * 
+	 * @return List<TypeWrapper> arguments: Arguments of function declaration
+	 */
 	public List<TypeWrapper> getArguments() {
 		return arguments;
 	}
 
+	/**
+	 * Setter function
+	 * 
+	 * @param List<TypeWrapper> arguments: Arguments of the function
+	 */
 	public void setArguments(List<TypeWrapper> arguments) {
 		this.arguments = arguments;
 	}
 
+	/**
+	 * Getter function
+	 * 
+	 * @return Function this: This instance of function or function declaration
+	 */
 	public Function getFunction(){
 		return this;
 	}

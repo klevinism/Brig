@@ -1,6 +1,10 @@
 let column be 10
 let row be 10
 
+for(let x : 0; x lower 100000; let x be x + 1) do {
+	print ""
+}
+/*
 for (let y : 0; y lower column; let y be y+1) do {
 	
 	if(y lower column/2) {
@@ -51,3 +55,5 @@ println ""
 
 println ""
 }
+*/
+
